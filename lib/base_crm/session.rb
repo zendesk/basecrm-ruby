@@ -19,7 +19,11 @@ module BaseCrm
     def deals
       pass_headers BaseCrm::Deal
     end
-    
+
+    def sources
+      pass_headers BaseCrm::Source
+    end
+
     private
 
     def pass_headers(klass)

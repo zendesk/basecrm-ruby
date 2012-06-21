@@ -8,6 +8,7 @@ module BaseCrm
   autoload :Contact, "base_crm/contact"
   autoload :Session, "base_crm/session"
   autoload :Deal,    "base_crm/deal"
+  autoload :Source,  "base_crm/source"
 
 end
 

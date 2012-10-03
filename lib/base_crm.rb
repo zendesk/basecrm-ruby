@@ -1,6 +1,6 @@
 require "api_client"
 require "base_crm/version"
-require "base_crm/version"
+require "base_crm/config"
 
 module BaseCrm
 

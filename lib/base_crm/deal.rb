@@ -6,7 +6,7 @@ module BaseCrm
     prefix    "api/v1"
 
     always do
-      endpoint "https://sales.futuresimple.com"
+      endpoint BaseCrm.config.endpoints.sales
     end
 
   end

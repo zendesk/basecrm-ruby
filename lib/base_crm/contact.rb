@@ -6,7 +6,7 @@ module BaseCrm
     prefix    "api/v1"
 
     always do
-      endpoint "https://crm.futuresimple.com"
+      endpoint BaseCrm.config.endpoints.crm
     end
 
     def initialize(attributes)

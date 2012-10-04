@@ -9,6 +9,11 @@ module BaseCrm
       endpoint BaseCrm.config.endpoints.sales
     end
 
+    def source
+      Source.find(self.source_id)
+    rescue ApiClient::Errors::NotFound
+    end
+
   end
 end
 

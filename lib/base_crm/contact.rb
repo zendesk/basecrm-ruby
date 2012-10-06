@@ -30,6 +30,12 @@ module BaseCrm
       hash
     end
 
+    def self.fetch_for_deal(deal)
+      scope.
+        endpoint(BaseCrm.config.endpoints.sales).
+        path("/api/v1/deals/#{deal.id}/contacts")
+    end
+
   end
 end
 

@@ -7,6 +7,5 @@ module BaseCrm
       endpoint "https://sales.futuresimple.com"
     end
 
-
   end
 end

@@ -1,6 +1,8 @@
 module BaseCrm
   class Contact < ApiClient::Resource::Base
 
+    include BaseCrm::Noteable
+
     namespace "contact"
 
     prefix    "api/v1"
@@ -34,6 +36,10 @@ module BaseCrm
       scope.
         endpoint(BaseCrm.config.endpoints.sales).
         path("/api/v1/deals/#{deal.id}/contacts")
+    end
+
+    def noteable_type
+      "Contact"
     end
 
   end

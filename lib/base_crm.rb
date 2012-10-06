@@ -10,6 +10,8 @@ module BaseCrm
   autoload :Deal,     "base_crm/deal"
   autoload :Source,   "base_crm/source"
   autoload :Resource, "base_crm/resource"
+  autoload :Note,     "base_crm/note"
+  autoload :Noteable, "base_crm/noteable"
 
 end
 

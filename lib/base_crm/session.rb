@@ -24,6 +24,10 @@ module BaseCrm
       pass_headers BaseCrm::Source
     end
 
+    def notes
+      pass_headers BaseCrm::Note
+    end
+
     private
 
     def pass_headers(klass)

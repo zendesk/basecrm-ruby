@@ -41,6 +41,17 @@ describe BaseCrm::Session do
 
   end
 
+  describe "#sources" do
+
+    it "queries the contacts with the right header" do
+      BaseCrm::Note.should_receive(:headers).with({
+        "X-Pipejump-Auth" => token
+      })
+      subject.notes
+    end
+
+  end
+
   describe "#account" do
 
     it "gets the account" do

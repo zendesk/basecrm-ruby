@@ -3,8 +3,10 @@ require "spec_helper"
 describe BaseCrm::Contact do
 
   subject do
-    BaseCrm::Contact.new({})
+    BaseCrm::Contact.new({ :id => 1234 })
   end
+
+  it_behaves_like "noteable", "Contact"
 
   describe "endpoint" do
 
@@ -51,6 +53,25 @@ describe BaseCrm::Contact do
         with("/api/v1/deals/#{deal.id}/contacts").
         and_return(scope)
       BaseCrm::Contact.fetch_for_deal(deal).should == scope
+    end
+
+  end
+
+  describe "#notes" do
+    let(:scope) { mock }
+    let(:fetch_scope) { mock }
+
+    it "passes the token and applies the params" do
+      subject.
+        should_receive(:pass_headers).
+        with(BaseCrm::Note).
+        and_return(scope)
+      scope.should_receive(:params).
+        with({
+          :noteable_type => "Contact",
+          :noteable_id => subject.id
+        }).and_return(fetch_scope)
+      subject.notes.should == fetch_scope
     end
 
   end

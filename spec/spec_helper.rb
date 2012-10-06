@@ -15,3 +15,5 @@ end
 RSpec.configure do |config|
 end
 
+Dir.glob("#{File.dirname(__FILE__)}/support/*.rb").each { |f| require f }
+

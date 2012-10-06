@@ -2,6 +2,7 @@ module BaseCrm
   class Deal < ApiClient::Resource::Base
 
     include BaseCrm::Resource
+    include BaseCrm::Noteable
 
     namespace "deal"
 
@@ -23,6 +24,10 @@ module BaseCrm
 
     def contacts
       pass_headers(Contact).fetch_for_deal(self)
+    end
+
+    def noteable_type
+      "Deal"
     end
 
   end

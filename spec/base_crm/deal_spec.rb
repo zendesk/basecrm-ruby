@@ -3,8 +3,10 @@ require "spec_helper"
 describe BaseCrm::Deal do
 
   subject do
-    BaseCrm::Deal.new({})
+    BaseCrm::Deal.new({ :id => 334 })
   end
+
+  it_behaves_like "noteable", "Deal"
 
   describe "endpoint" do
 

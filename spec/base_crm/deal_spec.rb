@@ -7,6 +7,7 @@ describe BaseCrm::Deal do
   end
 
   it_behaves_like "noteable", "Deal"
+  it_behaves_like "taskable", "Deal"
 
   describe "endpoint" do
 

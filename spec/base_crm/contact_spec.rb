@@ -7,6 +7,7 @@ describe BaseCrm::Contact do
   end
 
   it_behaves_like "noteable", "Contact"
+  it_behaves_like "taskable", "Contact"
 
   describe "endpoint" do
 

@@ -12,6 +12,8 @@ module BaseCrm
   autoload :Resource, "base_crm/resource"
   autoload :Note,     "base_crm/note"
   autoload :Noteable, "base_crm/noteable"
+  autoload :Task,     "base_crm/task"
+  autoload :Taskable, "base_crm/taskable"
 
 end
 

@@ -28,6 +28,10 @@ module BaseCrm
       pass_headers BaseCrm::Note
     end
 
+    def tasks
+      pass_headers BaseCrm::Task
+    end
+
     private
 
     def pass_headers(klass)

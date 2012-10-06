@@ -2,6 +2,7 @@ module BaseCrm
   class Contact < ApiClient::Resource::Base
 
     include BaseCrm::Noteable
+    include BaseCrm::Taskable
 
     namespace "contact"
 
@@ -11,7 +12,7 @@ module BaseCrm
       endpoint BaseCrm.config.endpoints.crm
     end
 
-    def initialize(attributes)
+    def initialize(attributes, original_scope = nil)
       super
       simplify_custom_fields
     end
@@ -39,6 +40,10 @@ module BaseCrm
     end
 
     def noteable_type
+      "Contact"
+    end
+
+    def taskable_type
       "Contact"
     end
 

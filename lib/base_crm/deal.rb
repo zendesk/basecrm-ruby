@@ -3,6 +3,7 @@ module BaseCrm
 
     include BaseCrm::Resource
     include BaseCrm::Noteable
+    include BaseCrm::Taskable
 
     namespace "deal"
 
@@ -27,6 +28,10 @@ module BaseCrm
     end
 
     def noteable_type
+      "Deal"
+    end
+
+    def taskable_type
       "Deal"
     end
 

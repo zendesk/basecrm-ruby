@@ -41,13 +41,24 @@ describe BaseCrm::Session do
 
   end
 
-  describe "#sources" do
+  describe "#notes" do
 
     it "queries the contacts with the right header" do
       BaseCrm::Note.should_receive(:headers).with({
         "X-Pipejump-Auth" => token
       })
       subject.notes
+    end
+
+  end
+
+  describe "#tasks" do
+
+    it "queries the contacts with the right header" do
+      BaseCrm::Task.should_receive(:headers).with({
+        "X-Pipejump-Auth" => token
+      })
+      subject.tasks
     end
 
   end

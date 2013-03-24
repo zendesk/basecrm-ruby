@@ -8,57 +8,62 @@ describe BaseCrm::Session do
     BaseCrm::Session.new(token)
   end
 
-  describe "#contacts" do
+  describe "passing of headers" do
+    let(:scope) { mock }
+    let(:scope_class) { mock }
 
-    it "queries the contacts with the right header" do
-      BaseCrm::Contact.should_receive(:headers).with({
+    before do
+      scope_class.should_receive(:headers).with({
         "X-Pipejump-Auth" => token
+      }).and_return(scope)
+      scope.should_receive(:headers).with({
+        "X-Futuresimple-Auth" => token
       })
-      subject.contacts
     end
 
-  end
+    describe "#contacts" do
+      let(:scope_class) { BaseCrm::Contact }
 
-  describe "#deals" do
+      it "queries the contacts with the right header" do
+        subject.contacts
+      end
 
-    it "queries the contacts with the right header" do
-      BaseCrm::Deal.should_receive(:headers).with({
-        "X-Pipejump-Auth" => token
-      })
-      subject.deals
     end
 
-  end
+    describe "#deals" do
+      let(:scope_class) { BaseCrm::Deal }
 
-  describe "#sources" do
+      it "queries the deals with the right header" do
+        subject.deals
+      end
 
-    it "queries the contacts with the right header" do
-      BaseCrm::Source.should_receive(:headers).with({
-        "X-Pipejump-Auth" => token
-      })
-      subject.sources
     end
 
-  end
+    describe "#sources" do
+      let(:scope_class) { BaseCrm::Source }
 
-  describe "#notes" do
+      it "queries the sources with the right header" do
+        subject.sources
+      end
 
-    it "queries the contacts with the right header" do
-      BaseCrm::Note.should_receive(:headers).with({
-        "X-Pipejump-Auth" => token
-      })
-      subject.notes
     end
 
-  end
+    describe "#notes" do
+      let(:scope_class) { BaseCrm::Note }
 
-  describe "#tasks" do
+      it "queries the notes with the right header" do
+        subject.notes
+      end
 
-    it "queries the contacts with the right header" do
-      BaseCrm::Task.should_receive(:headers).with({
-        "X-Pipejump-Auth" => token
-      })
-      subject.tasks
+    end
+
+    describe "#tasks" do
+      let(:scope_class) { BaseCrm::Task }
+
+      it "queries the tasks with the right header" do
+        subject.tasks
+      end
+
     end
 
   end
@@ -66,9 +71,11 @@ describe BaseCrm::Session do
   describe "#account" do
 
     it "gets the account" do
-
       BaseCrm::Account.should_receive(:headers).with({
         "X-Pipejump-Auth" => token
+      }).and_return(BaseCrm::Account)
+      BaseCrm::Account.should_receive(:headers).with({
+        "X-Futuresimple-Auth" => token
       }).and_return(BaseCrm::Account)
       BaseCrm::Account.should_receive(:fetch).with('/api/v1/account.json')
       subject.account

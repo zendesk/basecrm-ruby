@@ -35,7 +35,9 @@ module BaseCrm
     private
 
     def pass_headers(klass)
-      klass.headers("X-Pipejump-Auth" => self.token)
+      klass.
+        headers("X-Pipejump-Auth" => self.token).
+        headers("X-Futuresimple-Auth" => self.token)
     end
 
   end

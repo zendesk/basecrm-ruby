@@ -12,8 +12,8 @@ shared_examples "taskable" do |taskable_type|
         and_return(scope)
       scope.should_receive(:params).
         with({
-          :noteable_type => taskable_type,
-          :noteable_id => subject.id
+          :taskable_type => taskable_type,
+          :taskable_id => subject.id
         }).and_return(fetch_scope)
       subject.tasks.should == fetch_scope
     end
@@ -34,8 +34,8 @@ shared_examples "taskable" do |taskable_type|
         and_return(scope)
       scope.should_receive(:create).with({
         :content => task_content,
-        :noteable_type => taskable_type,
-        :noteable_id => subject.id
+        :taskable_type => taskable_type,
+        :taskable_id => subject.id
       }).and_return(task)
       subject.create_task(params).should == task
     end

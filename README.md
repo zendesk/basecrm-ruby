@@ -2,6 +2,9 @@
 
 New and shiny client for the Base CRM API
 
+NOTE: This is still a very early release. There might be a lot of
+breaking changes. You have been warned.
+
 ## Installation
 
 The gem is no available via Rubygems just yet. To install it, put this on your Gemfile:
@@ -13,24 +16,10 @@ gem 'basecrm', :git => 'git://github.com/basecrm/basecrm.git'
 == Usage
 
 Before using this gem you must require it by calling:
- 
+
 ```ruby
 require 'basecrm'
 ```
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'base_crm'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install base_crm
 
 ## Usage
 

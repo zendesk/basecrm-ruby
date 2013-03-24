@@ -32,12 +32,16 @@ module BaseCrm
       pass_headers BaseCrm::Task
     end
 
+    def leads
+      pass_headers BaseCrm::Lead
+    end
+
     private
 
     def pass_headers(klass)
       klass.
         headers("X-Pipejump-Auth" => self.token).
-        headers("X-Futuresimple-Auth" => self.token)
+        headers("X-Futuresimple-Token" => self.token)
     end
 
   end

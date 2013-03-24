@@ -17,7 +17,7 @@ describe BaseCrm::Session do
         "X-Pipejump-Auth" => token
       }).and_return(scope)
       scope.should_receive(:headers).with({
-        "X-Futuresimple-Auth" => token
+        "X-Futuresimple-Token" => token
       })
     end
 
@@ -66,6 +66,16 @@ describe BaseCrm::Session do
 
     end
 
+    describe "#leads" do
+      let(:scope_class) { BaseCrm::Lead }
+
+      it "queries the leads with the right header" do
+        subject.leads
+      end
+
+    end
+
+
   end
 
   describe "#account" do
@@ -75,7 +85,7 @@ describe BaseCrm::Session do
         "X-Pipejump-Auth" => token
       }).and_return(BaseCrm::Account)
       BaseCrm::Account.should_receive(:headers).with({
-        "X-Futuresimple-Auth" => token
+        "X-Futuresimple-Token" => token
       }).and_return(BaseCrm::Account)
       BaseCrm::Account.should_receive(:fetch).with('/api/v1/account.json')
       subject.account

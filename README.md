@@ -13,7 +13,7 @@ The gem is no available via Rubygems just yet. To install it, put this on your G
 gem 'basecrm', :git => 'git://github.com/basecrm/basecrm.git'
 ```
 
-== Usage
+## Usage
 
 Before using this gem you must require it by calling:
 

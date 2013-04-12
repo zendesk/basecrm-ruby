@@ -7,7 +7,19 @@ breaking changes. You have been warned.
 
 ## Installation
 
-The gem is no available via Rubygems just yet. To install it, put this on your Gemfile:
+The gem available via Rubygems. To install it, use the following command:
+
+```ruby
+sudo gem install basecrm
+```
+
+If you use Bundler, put this in your Gemfile:
+
+```ruby
+gem 'basecrm'
+```
+
+To get the latest version, put this in your Gemfile:
 
 ```ruby
 gem 'basecrm', :git => 'git://github.com/basecrm/basecrm.git'

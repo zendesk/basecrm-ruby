@@ -7,7 +7,7 @@ module BaseCrm
 
     namespace "deal"
 
-    prefix    "api/v1"
+    prefix "api/v1"
 
     always do
       endpoint BaseCrm.config.endpoints.sales
@@ -27,6 +27,10 @@ module BaseCrm
       pass_headers(Contact).fetch_for_deal(self)
     end
 
+    def forecasting
+      pass_headers(Forecasting).fetch_for_deal(self)
+    end
+
     def noteable_type
       "Deal"
     end
@@ -34,7 +38,6 @@ module BaseCrm
     def taskable_type
       "Deal"
     end
-
   end
 end
 

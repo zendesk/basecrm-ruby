@@ -90,8 +90,17 @@ describe BaseCrm::Deal do
       scope.should_receive(:fetch_for_deal).with(subject).and_return(fetch_scope)
       subject.contacts.should == fetch_scope
     end
-
   end
 
+  describe "#forecasting" do
+    let(:scope) { mock }
+    let(:fetch_scope) { mock }
+
+    it "passes the token and uses fetch_for_deal" do
+      subject.should_receive(:pass_headers).with(BaseCrm::Forecasting).and_return(scope)
+      scope.should_receive(:fetch_for_deal).with(subject).and_return(fetch_scope)
+      subject.forecasting.should == fetch_scope
+    end
+  end
 end
 

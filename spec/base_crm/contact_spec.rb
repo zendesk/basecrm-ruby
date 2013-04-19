@@ -55,7 +55,6 @@ describe BaseCrm::Contact do
         and_return(scope)
       BaseCrm::Contact.fetch_for_deal(deal).should == scope
     end
-
   end
 
   describe "#notes" do

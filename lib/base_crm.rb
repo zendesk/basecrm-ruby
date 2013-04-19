@@ -9,6 +9,7 @@ module BaseCrm
   autoload :Contact,         "base_crm/contact"
   autoload :Session,         "base_crm/session"
   autoload :Deal,            "base_crm/deal"
+  autoload :Forecasting,     "base_crm/forecasting"
   autoload :Source,          "base_crm/source"
   autoload :Resource,        "base_crm/resource"
   autoload :Note,            "base_crm/note"

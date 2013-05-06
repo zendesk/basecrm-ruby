@@ -5,7 +5,7 @@ module BaseCrm
     include BaseCrm::Noteable
     include BaseCrm::Taskable
 
-    namespace "deal"
+    namespace false
 
     prefix "api/v1"
 
@@ -14,12 +14,14 @@ module BaseCrm
     end
 
     def source
-      Source.find(self.source_id)
+      if self.source_id
+        pass_headers(Source).find(self.source_id)
+      end
     rescue ApiClient::Errors::NotFound
     end
 
     def contact
-      Contact.find(self.entity_id)
+      pass_headers(Contact).find(self.entity_id)
     rescue ApiClient::Errors::NotFound
     end
 
@@ -38,6 +40,11 @@ module BaseCrm
     def taskable_type
       "Deal"
     end
+
+    def self.build_one(result)
+      super result['deal']
+    end
+
   end
 end
 

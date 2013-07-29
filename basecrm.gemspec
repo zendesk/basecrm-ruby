@@ -3,7 +3,7 @@ require File.expand_path('../lib/base_crm/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Marcin Bunsch"]
-  gem.email         = ["marcin@futuresimple.com"]
+  gem.email         = ["marcin@getbase.com"]
   gem.description   = %q{Base CRM API Client}
   gem.summary       = %q{Base CRM API Client}
   gem.homepage      = "https://github.com/basecrm/basecrm"

@@ -1,9 +1,9 @@
 shared_examples "taskable" do |taskable_type|
 
-  let(:scope) { mock }
+  let(:scope) { double }
 
   describe "#tasks" do
-    let(:fetch_scope) { mock }
+    let(:fetch_scope) { double }
 
     it "passes the token and applies the params" do
       subject.
@@ -24,8 +24,8 @@ shared_examples "taskable" do |taskable_type|
     let(:params) do
       { :content => task_content }
     end
-    let(:task_content) { mock }
-    let(:task) { mock }
+    let(:task_content) { double }
+    let(:task) { double }
 
     it "creates a new task" do
       subject.

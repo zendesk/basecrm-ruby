@@ -43,9 +43,9 @@ describe BaseCrm::Deal do
 
   describe "#source" do
 
-    let(:source) { mock }
+    let(:source) { double }
     let(:source_id) { 444 }
-    let(:scope) { mock }
+    let(:scope) { double }
 
     before do
       subject.source_id = source_id
@@ -87,9 +87,9 @@ describe BaseCrm::Deal do
 
   describe "#contact" do
 
-    let(:contact) { mock }
-    let(:entity_id) { mock }
-    let(:scope) { mock }
+    let(:contact) { double }
+    let(:entity_id) { double }
+    let(:scope) { double }
 
     before do
       subject.entity_id = entity_id
@@ -120,8 +120,8 @@ describe BaseCrm::Deal do
   end
 
   describe "#contacts" do
-    let(:scope) { mock }
-    let(:fetch_scope) { mock }
+    let(:scope) { double }
+    let(:fetch_scope) { double }
 
     it "passes the token and users fetch_for_deal" do
       subject.should_receive(:pass_headers).with(BaseCrm::Contact).and_return(scope)
@@ -131,8 +131,8 @@ describe BaseCrm::Deal do
   end
 
   describe "#forecasting" do
-    let(:scope) { mock }
-    let(:fetch_scope) { mock }
+    let(:scope) { double }
+    let(:fetch_scope) { double }
 
     it "passes the token and uses fetch_for_deal" do
       subject.should_receive(:pass_headers).with(BaseCrm::Forecasting).and_return(scope)

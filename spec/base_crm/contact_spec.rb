@@ -42,8 +42,8 @@ describe BaseCrm::Contact do
   end
 
   describe ".fetch_for_deal" do
-    let(:scope) { mock }
-    let(:deal) { mock(:id => 444) }
+    let(:scope) { double }
+    let(:deal) { double(:id => 444) }
 
     it "returns the scope" do
       BaseCrm::Contact.should_receive(:scope).and_return(scope)
@@ -58,8 +58,8 @@ describe BaseCrm::Contact do
   end
 
   describe "#notes" do
-    let(:scope) { mock }
-    let(:fetch_scope) { mock }
+    let(:scope) { double }
+    let(:fetch_scope) { double }
 
     it "passes the token and applies the params" do
       subject.

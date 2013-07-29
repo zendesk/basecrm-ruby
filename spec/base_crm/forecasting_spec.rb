@@ -17,9 +17,9 @@ describe BaseCrm::Forecasting do
   end
 
   describe ".fetch_for_deal" do
-    let(:scope) { mock }
-    let(:deal) { mock(:id => 444) }
-    let(:result) { mock }
+    let(:scope) { double }
+    let(:deal) { double(:id => 444) }
+    let(:result) { double }
 
     it "returns the scope" do
       BaseCrm::Forecasting.should_receive(:scope).and_return(scope)

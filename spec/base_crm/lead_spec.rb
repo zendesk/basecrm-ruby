@@ -36,7 +36,7 @@ describe BaseCrm::Lead do
     end
 
     context "collection" do
-      let(:items) { mock }
+      let(:items) { double }
       let(:response) do
         { "items" => items }
       end

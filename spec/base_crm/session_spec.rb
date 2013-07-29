@@ -9,8 +9,8 @@ describe BaseCrm::Session do
   end
 
   describe "passing of headers" do
-    let(:scope) { mock }
-    let(:scope_class) { mock }
+    let(:scope) { double }
+    let(:scope_class) { double }
 
     before do
       scope_class.should_receive(:headers).with({

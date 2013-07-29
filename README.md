@@ -1,5 +1,7 @@
 # Base CRM API client
 
++[![Build Status](https://travis-ci.org/basecrm/basecrm.png?branch=master)](https://travis-ci.org/basecrm/basecrm)
+
 New and shiny client for the Base CRM API
 
 NOTE: This is still a very early release. There might be a lot of

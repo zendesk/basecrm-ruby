@@ -2,17 +2,12 @@ module BaseCrm
   module Taskable
 
     def tasks
-      pass_headers(Task).params({
-        :taskable_type => self.taskable_type,
-        :taskable_id => self.id
-      })
+      @tasks ||= BaseCrm::RelatedObjectScope.new(self, Task, :taskable)
     end
 
+    # Keeping it for legacy purposes
     def create_task(params)
-      pass_headers(Task).create({
-        :taskable_type => self.taskable_type,
-        :taskable_id => self.id
-      }.merge(params))
+      tasks.create(params)
     end
 
   end

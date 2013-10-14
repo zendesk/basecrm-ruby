@@ -5,4 +5,5 @@ gemspec
 
 gem "rspec"
 gem "simplecov"
+gem "rake"
 

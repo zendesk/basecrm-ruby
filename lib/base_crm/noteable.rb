@@ -2,18 +2,12 @@ module BaseCrm
   module Noteable
 
     def notes
-      pass_headers(Note).params({
-        :noteable_type => self.noteable_type,
-        :noteable_id => self.id
-      })
+      @notes ||= BaseCrm::RelatedObjectScope.new(self, Note, :noteable)
     end
 
+    # Keeping it for legacy purposes
     def create_note(message)
-      pass_headers(Note).create({
-        :content => message,
-        :noteable_type => self.noteable_type,
-        :noteable_id => self.id
-      })
+      notes.create(:content => message)
     end
 
   end

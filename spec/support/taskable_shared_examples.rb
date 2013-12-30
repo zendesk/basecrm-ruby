@@ -50,9 +50,9 @@ shared_examples "taskable" do |taskable_type|
     let(:params) do
       { :content => task_content }
     end
-    let(:task_content) { mock }
-    let(:tasks) { mock }
-    let(:task) { mock }
+    let(:task_content) { double }
+    let(:tasks) { double }
+    let(:task) { double }
 
     it "creates a new task" do
       subject.should_receive(:tasks).and_return(tasks)

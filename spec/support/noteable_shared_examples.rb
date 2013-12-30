@@ -21,9 +21,9 @@ shared_examples "noteable" do |noteable_type|
   end
 
   describe "#notes.create" do
-    let(:message) { mock }
-    let(:note) { mock }
-    let(:fetch_scope) { mock }
+    let(:message) { double }
+    let(:note) { double }
+    let(:fetch_scope) { double }
 
     it "passes the token and applies the params" do
       subject.
@@ -46,9 +46,9 @@ shared_examples "noteable" do |noteable_type|
   end
 
   describe "#create_note" do
-    let(:message) { mock }
-    let(:notes) { mock }
-    let(:note) { mock }
+    let(:message) { double }
+    let(:notes) { double }
+    let(:note) { double }
 
     it "creates a new note" do
       subject.should_receive(:notes).and_return(notes)

@@ -4,9 +4,6 @@
 
 New and shiny client for the Base CRM API
 
-NOTE: This is still a very early release. There might be a lot of
-breaking changes. You have been warned.
-
 ## Installation
 
 The gem available via Rubygems. To install it, use the following command:

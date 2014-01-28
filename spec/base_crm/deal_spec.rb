@@ -65,10 +65,7 @@ describe BaseCrm::Deal do
     context "when it is not found" do
       before do
         subject.stub(:pass_headers).with(BaseCrm::Source).and_return(scope)
-        scope.
-          stub(:find).
-          with(source_id).
-          and_raise(ApiClient::Errors::NotFound)
+        scope.stub(:find).with(source_id)
       end
       it { subject.source.should == nil }
     end
@@ -109,10 +106,7 @@ describe BaseCrm::Deal do
     context "when it is not found" do
       before do
         subject.stub(:pass_headers).with(BaseCrm::Contact).and_return(scope)
-        scope.
-          stub(:find).
-          with(entity_id).
-          and_raise(ApiClient::Errors::NotFound)
+        scope.stub(:find).with(entity_id)
       end
       it { subject.contact.should == nil }
     end

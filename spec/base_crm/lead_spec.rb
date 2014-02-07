@@ -22,7 +22,7 @@ describe BaseCrm::Lead do
   describe "simplify_custom_fields" do
 
     it "converts a hash into the value" do
-      subject.custom_fields = {
+      subject.custom_field_values = {
         'test' => { 'value' => 'yes!' }
       }
       result = subject.simplify_custom_fields

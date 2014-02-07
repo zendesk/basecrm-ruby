@@ -4,7 +4,7 @@ module BaseCrm
     include BaseCrm::Resource
     include BaseCrm::Noteable
     include BaseCrm::Taskable
-    include BaseCrm::CustomFieldable
+    include BaseCrm::CustomFieldable('custom_field_values')
 
     namespace "lead"
 

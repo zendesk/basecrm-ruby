@@ -31,13 +31,25 @@ describe BaseCrm::Contact do
   end
 
   describe "#payload" do
-
     it "removes wrong fields from payload" do
       subject.tags_joined_by_comma = 'ARRG'
       subject.linkedin_display = 'THIS IS SO WRONG'
       hash = subject.payload
       hash.has_key?('tags_joined_by_comma').should be_false
       hash.has_key?('linkedin_display').should be_false
+    end
+
+    it "uses tags_joined_by_comma to update tags" do
+      subject.tags_joined_by_comma = "abc, dce"
+
+      expect(subject.payload["tag_list"]).to eq("abc, dce")
+    end
+
+    it "uses tag_list to update tags if provided (backwards compatibility)" do
+      subject.tags_joined_by_comma = "abc, dce"
+      subject.tag_list = "bob, joe"
+
+      expect(subject.payload["tag_list"]).to eq("bob, joe")
     end
   end
 

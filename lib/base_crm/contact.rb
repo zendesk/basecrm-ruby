@@ -16,7 +16,7 @@ module BaseCrm
 
     def payload
       hash = super
-      hash.delete('tags_joined_by_comma')
+      hash['tag_list'] ||= hash.delete('tags_joined_by_comma')
       hash.delete('linkedin_display')
       hash
     end

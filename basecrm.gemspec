@@ -15,5 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = BaseCrm::VERSION
   gem.add_dependency "api_client", '>=0.4.2'
+
+  gem.add_development_dependency "rspec", "~>2.14.1"
 end
 

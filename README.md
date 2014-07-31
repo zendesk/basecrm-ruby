@@ -34,7 +34,7 @@ require 'basecrm'
 
 ## Usage
 
-TODO: Write usage instructions here
+For information on getting started, see our [wiki page](https://github.com/basecrm/basecrm/wiki).
 
 ## Contributing
 

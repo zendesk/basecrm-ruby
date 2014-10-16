@@ -4,6 +4,8 @@
 
 New and shiny client for the Base CRM API
 
+Please note [the upcoming changes to the deal representation in the API](http://dev.futuresimple.com/api/news) and the required actions to be taken till November 10th.
+
 ## Installation
 
 The gem available via Rubygems. To install it, use the following command:

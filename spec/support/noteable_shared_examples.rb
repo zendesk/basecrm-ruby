@@ -6,16 +6,17 @@ shared_examples "noteable" do |noteable_type|
     let(:fetch_scope) { double }
 
     it "passes the token and applies the params" do
-      subject.
-        should_receive(:pass_headers).
-        with(BaseCrm::Note).
-        and_return(scope)
-      scope.should_receive(:params).
-        with({
+      expect(subject).to receive(:pass_headers)
+        .with(BaseCrm::Note)
+        .and_return(scope)
+
+      expect(scope).to receive(:params)
+        .with({
           :noteable_type => noteable_type,
           :noteable_id => subject.id
         }).and_return(fetch_scope)
-      subject.notes.should == fetch_scope
+
+      expect(subject.notes).to eq(fetch_scope)
     end
 
   end
@@ -26,21 +27,24 @@ shared_examples "noteable" do |noteable_type|
     let(:fetch_scope) { double }
 
     it "passes the token and applies the params" do
-      subject.
-        should_receive(:pass_headers).
-        with(BaseCrm::Note).
-        and_return(scope)
-      scope.should_receive(:params).
-        with({
+      expect(subject).to receive(:pass_headers)
+        .with(BaseCrm::Note)
+        .and_return(scope)
+
+      expect(scope).to receive(:params)
+        .with({
           :noteable_type => noteable_type,
           :noteable_id => subject.id
         }).and_return(scope)
-      scope.should_receive(:create).with({
-        :content => message,
-        :noteable_type => noteable_type,
-        :noteable_id => subject.id
-      }).and_return(note)
-      subject.notes.create(:content => message).should == note
+
+      expect(scope).to receive(:create)
+        .with({
+          :content => message,
+          :noteable_type => noteable_type,
+          :noteable_id => subject.id
+        }).and_return(note)
+
+      expect(subject.notes.create(:content => message)).to eq(note)
     end
 
   end
@@ -51,11 +55,14 @@ shared_examples "noteable" do |noteable_type|
     let(:note) { double }
 
     it "creates a new note" do
-      subject.should_receive(:notes).and_return(notes)
-      notes.should_receive(:create).with({
-        :content => message
-      }).and_return(note)
-      subject.create_note(message).should == note
+      expect(subject).to receive(:notes).and_return(notes)
+
+      expect(notes).to receive(:create)
+        .with({
+          :content => message
+        }).and_return(note)
+
+      expect(subject.create_note(message)).to eq(note)
     end
 
   end

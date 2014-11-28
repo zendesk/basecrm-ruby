@@ -7,13 +7,9 @@ describe BaseCrm::Account do
   end
 
   describe "endpoint" do
+    let(:production_endpoint_url) { "https://sales.futuresimple.com" }
 
-    it "uses the production endpoint" do
-      BaseCrm::Account.scope.instance_eval do
-        @endpoint.should == "https://sales.futuresimple.com"
-      end
-    end
-
+    it_behaves_like "uses production"
   end
 
 end

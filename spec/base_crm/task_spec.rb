@@ -7,13 +7,9 @@ describe BaseCrm::Task do
   end
 
   describe "endpoint" do
+    let(:production_endpoint_url) { "https://common.futuresimple.com" }
 
-    it "uses the production endpoint" do
-      BaseCrm::Task.scope.instance_eval do
-        @endpoint.should == "https://common.futuresimple.com"
-      end
-    end
-
+    it_behaves_like "uses production"
   end
 
 end

@@ -16,7 +16,8 @@ describe BaseCrm::Resource do
     let(:other_klass) { double }
 
     it "copies the token header from the original scope" do
-      other_klass.should_receive(:headers).with(token_name => token)
+      expect(other_klass).to receive(:headers).with(token_name => token)
+
       instance.pass_headers(other_klass)
     end
 

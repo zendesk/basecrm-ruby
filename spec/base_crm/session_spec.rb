@@ -13,10 +13,11 @@ describe BaseCrm::Session do
     let(:scope_class) { double }
 
     before do
-      scope_class.should_receive(:headers).with({
+      expect(scope_class).to receive(:headers).with({
         "X-Pipejump-Auth" => token
       }).and_return(scope)
-      scope.should_receive(:headers).with({
+
+      expect(scope).to receive(:headers).with({
         "X-Futuresimple-Token" => token
       })
     end
@@ -81,13 +82,17 @@ describe BaseCrm::Session do
   describe "#account" do
 
     it "gets the account" do
-      BaseCrm::Account.should_receive(:headers).with({
+      expect(BaseCrm::Account).to receive(:headers).with({
         "X-Pipejump-Auth" => token
       }).and_return(BaseCrm::Account)
-      BaseCrm::Account.should_receive(:headers).with({
+
+      expect(BaseCrm::Account).to receive(:headers).with({
         "X-Futuresimple-Token" => token
       }).and_return(BaseCrm::Account)
-      BaseCrm::Account.should_receive(:fetch).with('/api/v1/account.json')
+
+      expect(BaseCrm::Account).to receive(:fetch)
+        .with('/api/v1/account.json')
+
       subject.account
     end
 

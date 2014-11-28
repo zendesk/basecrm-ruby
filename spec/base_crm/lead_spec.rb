@@ -10,13 +10,9 @@ describe BaseCrm::Lead do
   it_behaves_like "taskable", "Lead"
 
   describe "endpoint" do
+    let(:production_endpoint_url) { "https://leads.futuresimple.com" }
 
-    it "uses the production endpoint" do
-      BaseCrm::Lead.scope.instance_eval do
-        @endpoint.should == "https://leads.futuresimple.com"
-      end
-    end
-
+    it_behaves_like "uses production"
   end
 
   describe "simplify_custom_fields" do
@@ -26,7 +22,8 @@ describe BaseCrm::Lead do
         'test' => { 'value' => 'yes!' }
       }
       result = subject.simplify_custom_fields
-      result.should == { 'test' => 'yes!' }
+
+      expect(result).to eq({ 'test' => 'yes!' })
     end
   end
 
@@ -42,7 +39,8 @@ describe BaseCrm::Lead do
       end
 
       it "extracts the items" do
-        BaseCrm::Lead.should_receive(:build_many).with(items)
+        expect(BaseCrm::Lead).to receive(:build_many).with(items)
+
         BaseCrm::Lead.build(response)
       end
 
@@ -51,7 +49,8 @@ describe BaseCrm::Lead do
     context "single" do
 
       it "extracts the items" do
-        BaseCrm::Lead.should_receive(:build_one).with(response)
+        expect(BaseCrm::Lead).to receive(:build_one).with(response)
+
         BaseCrm::Lead.build(response)
       end
 

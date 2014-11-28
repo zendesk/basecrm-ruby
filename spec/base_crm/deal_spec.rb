@@ -13,6 +13,12 @@ describe BaseCrm::Deal do
   it_behaves_like "noteable", "Deal"
   it_behaves_like "taskable", "Deal"
 
+  describe "endpoint" do
+    let(:production_endpoint_url) { "https://sales.futuresimple.com" }
+
+    it_behaves_like "uses production"
+  end
+
   describe "namespace" do
 
     it "has no default namespace" do
@@ -32,14 +38,6 @@ describe BaseCrm::Deal do
 
     end
 
-  end
-
-  describe "endpoint" do
-    let(:endpoint) { BaseCrm::Deal.scope.instance_eval { @endpoint } }
-
-    it "uses the production endpoint" do
-      expect(endpoint).to eq("https://sales.futuresimple.com")
-    end
   end
 
   describe "#source" do

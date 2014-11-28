@@ -10,13 +10,9 @@ describe BaseCrm::Contact do
   it_behaves_like "taskable", "Contact"
 
   describe "endpoint" do
+    let(:production_endpoint_url) { "https://crm.futuresimple.com" }
 
-    it "uses the production endpoint" do
-      BaseCrm::Contact.scope.instance_eval do
-        @endpoint.should == "https://crm.futuresimple.com"
-      end
-    end
-
+    it_behaves_like "uses production"
   end
 
   describe "simplify_custom_fields" do
@@ -26,7 +22,8 @@ describe BaseCrm::Contact do
         'test' => { 'value' => 'yes!' }
       }
       result = subject.simplify_custom_fields
-      result.should == { 'test' => 'yes!' }
+
+      expect(result).to eq({ 'test' => 'yes!' })
     end
   end
 
@@ -35,8 +32,9 @@ describe BaseCrm::Contact do
       subject.tags_joined_by_comma = 'ARRG'
       subject.linkedin_display = 'THIS IS SO WRONG'
       hash = subject.payload
-      hash.has_key?('tags_joined_by_comma').should be_false
-      hash.has_key?('linkedin_display').should be_false
+
+      expect(hash).to_not have_key('tags_joined_by_comma')
+      expect(hash).to_not have_key('linkedin_display')
     end
 
     it "uses tags_joined_by_comma to update tags" do
@@ -58,14 +56,17 @@ describe BaseCrm::Contact do
     let(:deal) { double(:id => 444) }
 
     it "returns the scope" do
-      BaseCrm::Contact.should_receive(:scope).and_return(scope)
-      scope.should_receive(:endpoint).
-        with(BaseCrm.config.endpoints.sales).
-        and_return(scope)
-      scope.should_receive(:path).
-        with("/api/v1/deals/#{deal.id}/contacts").
-        and_return(scope)
-      BaseCrm::Contact.fetch_for_deal(deal).should == scope
+      expect(BaseCrm::Contact).to receive(:scope).and_return(scope)
+
+      expect(scope).to receive(:endpoint)
+        .with(BaseCrm.config.endpoints.sales)
+        .and_return(scope)
+
+      expect(scope).to receive(:path)
+        .with("/api/v1/deals/#{deal.id}/contacts")
+        .and_return(scope)
+
+      expect(BaseCrm::Contact.fetch_for_deal(deal)).to eq(scope)
     end
   end
 
@@ -74,16 +75,17 @@ describe BaseCrm::Contact do
     let(:fetch_scope) { double }
 
     it "passes the token and applies the params" do
-      subject.
-        should_receive(:pass_headers).
-        with(BaseCrm::Note).
-        and_return(scope)
-      scope.should_receive(:params).
-        with({
+      expect(subject).to receive(:pass_headers)
+        .with(BaseCrm::Note)
+        .and_return(scope)
+
+      expect(scope).to receive(:params)
+        .with({
           :noteable_type => "Contact",
           :noteable_id => subject.id
         }).and_return(fetch_scope)
-      subject.notes.should == fetch_scope
+
+      expect(subject.notes).to eq(fetch_scope)
     end
 
   end

@@ -1,11 +1,13 @@
 require "spec_helper"
 
 describe BaseCrm::Deal do
+  subject { deal }
 
-  subject do
-    d = BaseCrm::Deal.new({ :id => 334 })
-    d.original_scope = ApiClient::Resource::Scope.new(BaseCrm::Deal)
-    d
+  let(:deal) { BaseCrm::Deal.new({ :id => 334 }) }
+  let(:deals_scope) { ApiClient::Resource::Scope.new(BaseCrm::Deal) }
+
+  before do
+    deal.original_scope = deals_scope
   end
 
   it_behaves_like "noteable", "Deal"
@@ -14,7 +16,7 @@ describe BaseCrm::Deal do
   describe "namespace" do
 
     it "has no default namespace" do
-      BaseCrm::Deal.namespace.should be_false
+      expect(described_class.namespace).to be_falsey
     end
 
     context "when instantiating" do
@@ -22,9 +24,10 @@ describe BaseCrm::Deal do
 
       it "uses a namespace" do
         result = BaseCrm::Deal.build_one 'name' => name
-        result.name.should be_nil
+        expect(result.name).to be_nil
+
         result = BaseCrm::Deal.build_one 'deal' => { 'name' => name }
-        result.name.should == name
+        expect(result.name).to eq(name)
       end
 
     end
@@ -32,107 +35,112 @@ describe BaseCrm::Deal do
   end
 
   describe "endpoint" do
+    let(:endpoint) { BaseCrm::Deal.scope.instance_eval { @endpoint } }
 
     it "uses the production endpoint" do
-      BaseCrm::Deal.scope.instance_eval do
-        @endpoint.should == "https://sales.futuresimple.com"
-      end
+      expect(endpoint).to eq("https://sales.futuresimple.com")
     end
-
   end
 
   describe "#source" do
 
-    let(:source) { double }
     let(:source_id) { 444 }
     let(:scope) { double }
 
     before do
       subject.source_id = source_id
+
+      allow(subject).to receive(:pass_headers)
+        .with(BaseCrm::Source)
+        .and_return(scope)
+
+      allow(scope).to receive(:find)
+        .with(source_id)
+        .and_return(source)
     end
 
     context "when it is found" do
-      before do
-        subject.stub(:pass_headers).with(BaseCrm::Source).and_return(scope)
-        scope.
-          stub(:find).
-          with(source_id).
-          and_return(source)
-      end
-      it { subject.source.should == source }
+      let(:source) { double }
+
+      its(:source) { should eq(source) }
     end
 
     context "when it is not found" do
-      before do
-        subject.stub(:pass_headers).with(BaseCrm::Source).and_return(scope)
-        scope.stub(:find).with(source_id)
-      end
-      it { subject.source.should == nil }
+      let(:source) { nil }
+
+      its(:source) { should be_nil }
     end
 
     context "when there is no source_id" do
       let(:source_id) { nil }
+      let(:source) { nil }
+
+      its(:source) { should be_nil }
 
       it "does nothing" do
-        subject.should_not_receive(:pass_headers)
-        subject.source.should be_nil
+        expect(subject).to_not receive(:pass_headers)
       end
-
     end
 
   end
 
   describe "#contact" do
 
-    let(:contact) { double }
     let(:entity_id) { double }
     let(:scope) { double }
 
     before do
       subject.entity_id = entity_id
+
+      allow(subject).to receive(:pass_headers)
+        .with(BaseCrm::Contact)
+        .and_return(scope)
+
+      allow(scope).to receive(:find)
+        .with(entity_id)
+        .and_return(contact)
     end
 
     context "when it is found" do
-      before do
-        subject.stub(:pass_headers).with(BaseCrm::Contact).and_return(scope)
-        scope.
-          stub(:find).
-          with(entity_id).
-          and_return(contact)
-      end
-      it { subject.contact.should == contact }
+      let(:contact) { double }
+
+      its(:contact) { should eq(contact) }
     end
 
     context "when it is not found" do
-      before do
-        subject.stub(:pass_headers).with(BaseCrm::Contact).and_return(scope)
-        scope.stub(:find).with(entity_id)
-      end
-      it { subject.contact.should == nil }
+      let(:contact) { nil }
+
+      its(:contact) { should be_nil }
     end
 
   end
 
-  describe "#contacts" do
+  context "headers" do
     let(:scope) { double }
-    let(:fetch_scope) { double }
+    let(:fetch_scope) { double(:fetch_for_deal) }
 
-    it "passes the token and users fetch_for_deal" do
-      subject.should_receive(:pass_headers).with(BaseCrm::Contact).and_return(scope)
-      scope.should_receive(:fetch_for_deal).with(subject).and_return(fetch_scope)
-      subject.contacts.should == fetch_scope
+    before do
+      allow(subject).to receive(:pass_headers)
+        .with(pass_headers)
+        .and_return(scope)
+
+      allow(scope).to receive(:fetch_for_deal)
+        .with(subject)
+        .and_return(fetch_scope)
     end
-  end
 
-  describe "#forecasting" do
-    let(:scope) { double }
-    let(:fetch_scope) { double }
+    describe "#contacts" do
+      let(:pass_headers) { BaseCrm::Contact }
 
-    it "passes the token and uses fetch_for_deal" do
-      subject.should_receive(:pass_headers).with(BaseCrm::Forecasting).and_return(scope)
-      scope.should_receive(:fetch_for_deal).with(subject).and_return(fetch_scope)
-      subject.forecasting.should == fetch_scope
+      its(:contacts) { should eq(fetch_scope) }
     end
+
+    describe "#forecasting" do
+      let(:pass_headers) { BaseCrm::Forecasting }
+
+      its(:forecasting) { should eq(fetch_scope) }
+    end
+
   end
 end
 

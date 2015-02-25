@@ -7,13 +7,9 @@ describe BaseCrm::Forecasting do
   end
 
   describe "endpoint" do
+    let(:production_endpoint_url) { "https://sales.futuresimple.com" }
 
-    it "uses the production endpoint" do
-      BaseCrm::Forecasting.scope.instance_eval do
-        @endpoint.should == "https://sales.futuresimple.com"
-      end
-    end
-
+    it_behaves_like "uses production"
   end
 
   describe ".fetch_for_deal" do
@@ -22,11 +18,13 @@ describe BaseCrm::Forecasting do
     let(:result) { double }
 
     it "returns the scope" do
-      BaseCrm::Forecasting.should_receive(:scope).and_return(scope)
-      scope.should_receive(:get).
-        with("/api/v1/deals/#{deal.id}/forecasting.json").
-        and_return(result)
-      BaseCrm::Forecasting.fetch_for_deal(deal).should == result
+      expect(BaseCrm::Forecasting).to receive(:scope).and_return(scope)
+
+      expect(scope).to receive(:get)
+        .with("/api/v1/deals/#{deal.id}/forecasting.json")
+        .and_return(result)
+
+      expect(BaseCrm::Forecasting.fetch_for_deal(deal)).to eq(result)
     end
   end
 

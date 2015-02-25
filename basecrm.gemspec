@@ -16,7 +16,8 @@ Gem::Specification.new do |gem|
   gem.version       = BaseCrm::VERSION
   gem.add_dependency "api_client", '>=0.4.2'
 
-  gem.add_development_dependency "rspec", "~>2.14.1"
+  gem.add_development_dependency "rspec", "~>3.1.0"
+  gem.add_development_dependency "rspec-its"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "rake"
 end

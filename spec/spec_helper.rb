@@ -7,6 +7,7 @@
 
 require "base_crm"
 require "simplecov"
+require "rspec/its"
 
 SimpleCov.start do
   add_filter '/spec'

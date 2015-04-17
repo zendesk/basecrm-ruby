@@ -75,7 +75,7 @@ client.deals.all.map { |deal| deal.name } # => Array<String>
 To retrieve list of resources and use filtering you will call `#where` method:
 
 ```ruby
-client = BaseCRM::Client.new(accss_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.deals.where(organization_id: google.id, hot: true) # => Array<BaseCRM::Deal>
 ```
 
@@ -102,7 +102,7 @@ client.deals.update(deal) # => BaseCRM::Deal
 To destroy a resource use `#destroy` method:
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOU_PERSONAL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.deals.destroy(id) # => true
 ```
 
@@ -127,7 +127,7 @@ Documentation for every action can be found in corresponding service files under
 ### Account
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.accounts # => BaseCRM::AccountsService
 ```
 
@@ -137,7 +137,7 @@ Actions:
 ### AssociatedContact
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.associated_contacts # => BaseCRM::AssociatedContactsService
 ```
 
@@ -149,7 +149,7 @@ Actions:
 ### Contact
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.contacts # => BaseCRM::ContactsService
 ```
 
@@ -163,7 +163,7 @@ Actions:
 ### Deal
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.deals # => BaseCRM::DealsService
 ```
 
@@ -177,7 +177,7 @@ Actions:
 ### Lead
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.leads # => BaseCRM::LeadsService
 ```
 
@@ -191,7 +191,7 @@ Actions:
 ### LossReason
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.loss_reasons # => BaseCRM::LossReasonsService
 ```
 
@@ -205,7 +205,7 @@ Actions:
 ### Note
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.notes # => BaseCRM::NotesService
 ```
 
@@ -219,7 +219,7 @@ Actions:
 ### Pipeline
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.pipelines # => BaseCRM::PipelinesService
 ```
 
@@ -229,7 +229,7 @@ Actions:
 ### Source
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.sources # => BaseCRM::SourcesService
 ```
 
@@ -243,7 +243,7 @@ Actions:
 ### Stage
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.stages # => BaseCRM::StagesService
 ```
 
@@ -253,7 +253,7 @@ Actions:
 ### Tag
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.tags # => BaseCRM::TagsService
 ```
 
@@ -267,7 +267,7 @@ Actions:
 ### Task
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.tasks # => BaseCRM::TasksService
 ```
 
@@ -281,7 +281,7 @@ Actions:
 ### User
 
 ```ruby
-client = BaseCRM::Client.new(access_token: "<YOUR_PERSONL_ACCESS_TOKEN>")
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 client.users # => BaseCRM::UsersService
 ```
 

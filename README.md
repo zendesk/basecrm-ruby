@@ -9,7 +9,7 @@ Make sure you have [rubygems](https://rubygems.org) installed.
 The gem is available via Rubygems. To install, use the following command:
 
 ```ruby
-sudo gem install basecrm
+gem install basecrm
 ```
 
 If you use Bundler, put the line below in your Gemfile:

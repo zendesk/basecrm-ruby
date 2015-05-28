@@ -17,7 +17,7 @@ module BaseCRM
     def start(device_uuid)
       validate_device!(device_uuid)
 
-      status, _, root = @client.post("/sync/start", nil, build_headers(device_uuid))
+      status, _, root = @client.post("/sync/start", {}, build_headers(device_uuid))
       return nil if status == 204
 
       build_session(root)
@@ -36,10 +36,10 @@ module BaseCRM
     # @return [Array<Array<SyncMeta, Model>>] The list of sync's metadata associated with data and data.
     def fetch(device_uuid, session_id, queue='main')
       validate_device!(device_uuid)
-      raise ArgumentError, "session_id must not be nil nor empty" unless device_uuid && !device_uuid.strip.empty?
-      raise ArgumentError, "queue name must not be nil nor empty" unless device_uuid && !device_uuid.strip.empty?
+      raise ArgumentError, "session_id must not be nil nor empty" unless session_id && !session_id.strip.empty?
+      raise ArgumentError, "queue name must not be nil nor empty" unless queue && !queue.strip.empty?
 
-      status, _, root = @client.get("/sync/#{session_id}/queues/#{queue}", nil, build_headers(device_uuid))
+      status, _, root = @client.get("/sync/#{session_id}/queues/#{queue}", {}, build_headers(device_uuid))
       return [] if status == 204
 
       root[:items].map do |item|
@@ -67,7 +67,7 @@ module BaseCRM
         :ack_keys => ack_keys.map(&:to_s)
       }
       status, _, _ = @client.post('/sync/ack', payload, build_headers(device_uuid))
-      status == 204
+      status == 202
     end
 
   private
@@ -87,7 +87,7 @@ module BaseCRM
 
     def build_session(root)
       session_data = root[:data]
-      session_data[:queues] = session_data[:queues].map { |queue| SyncQueue.new(queues[:data]) }
+      session_data[:queues] = session_data[:queues].map { |queue| SyncQueue.new(queue[:data]) }
       SyncSession.new(session_data)
     end
   end

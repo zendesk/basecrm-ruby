@@ -42,6 +42,8 @@ require 'basecrm/services/tasks_service'
 require 'basecrm/services/users_service'
 require 'basecrm/services/sync_service'
 
+require 'basecrm/sync'
+
 module BaseCRM
   class Client
     attr_reader :config

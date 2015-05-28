@@ -120,6 +120,28 @@ lead.website = "http://www.designservices.com"
 client.leads.update(lead)
 ```
 
+## Sync API
+
+The following sample code shows how to perform a full synchronization flow using high-level wrapper.
+
+First of all you need an instance of `BaseCRM::Client`. High-level `BaseCRM::Sync` wrapper is using `BaseCRM::SyncService` to interact with the Sync API.
+In addition to the client instance, you must provide a device’s UUID within `device_uuid` parameter. The device’s UUID must not change between synchronization sessions, otherwise the sync service will not recognize the device and will send all the data again.
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+sync = BaseCRM::Sync.new(client: client, device_uuid: "<YOUR_DEVICES_UUID>")
+```
+
+Now all you have to do is to call `#fetch` method and pass a block that you might use to store fetched data to a database.
+
+```ruby
+sync.fetch do |sync_meta, resource|
+  DB.send(sync_meta.event_type, resource) ? sync_meta.ack : sync_meta.nack
+end
+```
+
+Notice that you must call either `#ack` or `#nack` method.
+
 ## Resources and actions
 
 Documentation for every action can be found in corresponding service files under `lib/basecrm/services` directory.

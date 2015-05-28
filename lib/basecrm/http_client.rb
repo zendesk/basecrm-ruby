@@ -30,25 +30,25 @@ module BaseCRM
       end
     end
 
-    def get(path, params={})
-      request(:get, path, params)
+    def get(path, params={}, headers={})
+      request(:get, path, params, headers)
     end
 
-    def post(path, body={})
-      request(:post, path, body)
+    def post(path, body={}, headers={})
+      request(:post, path, body, headers)
     end
 
-    def put(path, body={})
-      request(:put, path, body)
+    def put(path, body={}, headers={})
+      request(:put, path, body, headers)
     end
 
-    def delete(path, params={})
+    def delete(path, params={}, headers={})
       request(:delete, path, params)
     end
 
-    def request(method, path, data={})
+    def request(method, path, data={}, headers={})
       options = {
-        headers: @headers
+        headers: @headers.merge(headers.to_h)
       }
 
       case method.to_s.downcase.to_sym

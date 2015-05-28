@@ -82,7 +82,7 @@ module BaseCRM
     end
 
     def classify_type(type)
-      "BaseCRM::#{type.split('_').map(&:capitalize).join}".constantize
+      BaseCRM.const_get(type.split('_').map(&:capitalize).join)
     end
 
     def build_session(root)

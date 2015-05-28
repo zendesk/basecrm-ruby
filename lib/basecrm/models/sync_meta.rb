@@ -23,7 +23,7 @@ module BaseCRM
 
     def nack
       @acknowledged = true
-      [:nack, nil]
+      [:nack, self.ack_key]
     end
   end
 end

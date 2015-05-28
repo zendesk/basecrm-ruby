@@ -20,7 +20,7 @@ module BaseCRM
       status, _, root = @client.post("/sync/start", nil, build_headers(device_uuid))
       return nil if status == 204
 
-      SyncSession.new(root[:data])
+      build_session(root)
     end
 
     # Get data from queue
@@ -43,7 +43,7 @@ module BaseCRM
       return [] if status == 204
 
       root[:items].map do |item|
-        klass = "BaseCRM::#{item[:meta][:type]}".constantize
+        klass = classify_type(item[:meta][:type])
         [SyncMeta.new(item[:meta][:sync]), klass.new(item[:data])]
       end
     end
@@ -79,6 +79,16 @@ module BaseCRM
       {
         "X-Basecrm-Device-UUID" => device_uuid
       }
+    end
+
+    def classify_type(type)
+      "BaseCRM::#{type.split('_').map(&:capitalize).join}".constantize
+    end
+
+    def build_session(root)
+      session_data = root[:data]
+      session_data[:queues] = session_data[:queues].map { |queue| SyncQueue.new(queues[:data]) }
+      SyncSession.new(session_data)
     end
   end
 end

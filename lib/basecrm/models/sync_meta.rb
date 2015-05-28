@@ -11,5 +11,19 @@ module BaseCRM
     # @attribute [r] revision
     #   @return [String] Data revision.
     # attr_reader :revision
+
+    def acknowledged?
+      !!@acknowledged
+    end
+
+    def ack
+      @acknowledged = true
+      [:ack, self.ack_key]
+    end
+
+    def nack
+      @acknowledged = true
+      [:nack, nil]
+    end
   end
 end

@@ -135,12 +135,18 @@ sync = BaseCRM::Sync.new(client: client, device_uuid: "<YOUR_DEVICES_UUID>")
 Now all you have to do is to call `#fetch` method and pass a block that you might use to store fetched data to a database.
 
 ```ruby
-sync.fetch do |sync_meta, resource|
-  DB.send(sync_meta.event_type, resource) ? sync_meta.ack : sync_meta.nack
+sync.fetch do |meta, resource|
+  options = {
+    table: meta.type,
+    statement: meta.sync.event_type,
+    properties: resource
+  }
+
+  DB.execute(options) ? meta.sync.ack : meta.sync.nack
 end
 ```
 
-Notice that you must call either `#ack` or `#nack` method.
+Notice that you must call either `#ack` or `#nack` method on an instance of `BaseCRM::SyncMeta`.
 
 ## Resources and actions
 

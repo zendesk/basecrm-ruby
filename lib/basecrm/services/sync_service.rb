@@ -33,7 +33,7 @@ module BaseCRM
     # @param device_uuid [String] Device's UUID for which to perform synchronization
     # @param session_id [String] Unique identifier of a synchronization session.
     # @param queue [String|Symbol] Queue name.
-    # @return [Array<Array<SyncMeta, Model>>] The list of sync's metadata associated with data and data.
+    # @return [Array<Array<Meta, Model>>] The list of sync's metadata associated with data and data.
     def fetch(device_uuid, session_id, queue='main')
       validate_device!(device_uuid)
       raise ArgumentError, "session_id must not be nil nor empty" unless session_id && !session_id.strip.empty?
@@ -44,7 +44,8 @@ module BaseCRM
 
       root[:items].map do |item|
         klass = classify_type(item[:meta][:type])
-        [SyncMeta.new(item[:meta][:sync]), klass.new(item[:data])]
+        next unless klass
+        [build_meta(item[:meta]), klass.new(item[:data])]
       end
     end
 
@@ -82,13 +83,18 @@ module BaseCRM
     end
 
     def classify_type(type)
-      BaseCRM.const_get(type.split('_').map(&:capitalize).join)
+      return nil unless type && !type.empty?
+      BaseCRM.const_get(type.split('_').map(&:capitalize).join) rescue nil
     end
 
     def build_session(root)
       session_data = root[:data]
       session_data[:queues] = session_data[:queues].map { |queue| SyncQueue.new(queue[:data]) }
       SyncSession.new(session_data)
+    end
+
+    def build_meta(meta)
+      Meta.new(meta.merge(sync: SyncMeta.new(meta[:sync])))
     end
   end
 end

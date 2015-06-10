@@ -61,8 +61,8 @@ describe BaseCRM::Sync do
 
       let(:queue_items) do
         [
-          [BaseCRM::SyncMeta.new(event_type: 'created', ack_key: 'User-1234-1'), BaseCRM::User.new(id: 1)],
-          [BaseCRM::SyncMeta.new(event_type: 'created', ack_key: 'Source-1234-1'), BaseCRM::Source.new(id: 1)]
+          [BaseCRM::Meta.new(type: 'user', sync: BaseCRM::SyncMeta.new(event_type: 'created', ack_key: 'User-1234-1')), BaseCRM::User.new(id: 1)],
+          [BaseCRM::Meta.new(type: 'source', sync: BaseCRM::SyncMeta.new(event_type: 'created', ack_key: 'Source-1234-1')), BaseCRM::Source.new(id: 1)]
         ]
       end
 
@@ -74,19 +74,20 @@ describe BaseCRM::Sync do
       end
 
       it 'does whole synchronization flow' do
-        subject.fetch { |s, r| s.ack }
+        subject.fetch { |m, r| m.sync.ack }
       end
 
       it 'calls a provided block as many times as items in the queue' do
         counter = 0
-        subject.fetch { |s, r| counter += 1; s.ack }
+        subject.fetch { |m, r| counter += 1; m.sync.ack }
         expect(counter).to eq(2)
       end
 
       it 'passes two elements to provided block: first element is BaseCRM::SyncMeta and the second is a resource' do
-        subject.fetch do |s, r|
-          expect(s).to be_a BaseCRM::SyncMeta
-          s.ack
+        subject.fetch do |m, r|
+          expect(m).to be_a BaseCRM::Meta
+          expect(m.sync).to be_a BaseCRM::SyncMeta
+          m.sync.ack
         end
       end
     end

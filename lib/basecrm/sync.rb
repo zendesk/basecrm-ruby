@@ -28,8 +28,8 @@ module BaseCRM
     #
     #   client = BaseCRM::Client.new(access_token: "<YOUR_ACCESS_TOKEN>")
     #   sync = BaseCRM::Sync.new(client: client, device_uuid: "<YOUR_DEVICES_UUID>")
-    #   sync.fetch do |sync_meta, resource|
-    #     DB.send(sync_meta.event_type, entity) ? sync_meta.ack : sync_meta.nack
+    #   sync.fetch do |meta, resource|
+    #     DB.send(meta.sync.event_type, entity) ? meta.sync.ack : meta.sync.nack
     #   end
     #
     # @param block [Proc] Procedure that will be called for every item in the queue. Takes two input arguments: SyncMeta instance

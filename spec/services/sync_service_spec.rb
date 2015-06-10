@@ -267,15 +267,19 @@ describe BaseCRM::SyncService do
         items = client.sync.fetch(device_uuid, session_id)
 
         sync_meta, user = items[0]
-        expect(sync_meta).to be_a BaseCRM::SyncMeta
+        expect(sync_meta).to be_a BaseCRM::Meta
+        expect(sync_meta.sync).to be_a BaseCRM::SyncMeta
         expect(user).to be_a BaseCRM::User
-        expect(sync_meta.ack_key).to eq('User-123-1')
+        expect(sync_meta.type).to eq('user')
+        expect(sync_meta.sync.ack_key).to eq('User-123-1')
         expect(user.id).to eq(1)
 
         sync_meta, source = items[1]
-        expect(sync_meta).to be_a BaseCRM::SyncMeta
+        expect(sync_meta).to be_a BaseCRM::Meta
+        expect(sync_meta.sync).to be_a BaseCRM::SyncMeta
         expect(source).to be_a BaseCRM::Source
-        expect(sync_meta.ack_key).to eq('Source-123-1')
+        expect(sync_meta.type).to eq('source')
+        expect(sync_meta.sync.ack_key).to eq('Source-123-1')
         expect(source.id).to eq(1)
       end
     end

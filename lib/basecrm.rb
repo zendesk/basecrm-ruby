@@ -8,6 +8,7 @@ require 'basecrm/configuration'
 require 'basecrm/http_client'
 
 require 'basecrm/model'
+require 'basecrm/models/meta'
 require 'basecrm/models/account'
 require 'basecrm/models/address'
 require 'basecrm/models/associated_contact'

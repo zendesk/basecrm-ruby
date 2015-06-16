@@ -1,5 +1,12 @@
 ## CHANGELOG
 
+### v1.1.2 (2015-06-17)
+
+**Features and Improments**
+
+* `BaseCRM::HttpClient` prints response payload in debug mode.
+* `BaseCRM::SyncService#fetch` method return `nil` value if there is nothing more to synchronize. Previously it returned an empty array. This change fixes an issue where the sync service can return an empty array as a valid response.
+
 ### v1.1.1 (2015-06-10)
 
 **Features and Improvements**

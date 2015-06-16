@@ -71,7 +71,9 @@ module BaseCRM
         end
       RUBY
 
-      [res.status, res.headers, extract_body(res)]
+      body = extract_body(res)
+      @config.logger.debug body if @config.debug? && body && @config.logger
+      [res.status, res.headers, body]
     rescue Faraday::Error::ConnectionFailed => e
       raise ConnectionError, e.message
     end

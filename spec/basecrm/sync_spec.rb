@@ -70,6 +70,7 @@ describe BaseCRM::Sync do
         expect(client.sync).to receive(:start).with(device_uuid).and_return(session)
         expect(client.sync).to receive(:fetch).with(device_uuid, session_id).and_return(queue_items)
         expect(client.sync).to receive(:fetch).with(device_uuid, session_id).and_return([])
+        expect(client.sync).to receive(:fetch).with(device_uuid, session_id).and_return(nil)
         expect(client.sync).to receive(:ack).with(device_uuid, ack_keys).and_return(true)
       end
 

@@ -50,7 +50,10 @@ module BaseCRM
         queued_data = @client.sync.fetch(@device_uuid, session.id)
 
         # nothing more to synchronize ?
-        break if queued_data.empty?
+        break unless queued_data
+
+        # something bad at the backend
+        next if queued_data.empty?
 
         ack_keys = []
         queued_data.each do |sync_meta, resource|

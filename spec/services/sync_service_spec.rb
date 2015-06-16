@@ -45,7 +45,7 @@ describe BaseCRM::SyncService do
       end
 
       it 'returns nil' do
-        expect(client.http_client).to receive(:post).with('/sync/start', {}, {'X-Basecrm-Device-UUID' => device_uuid}).and_return(http_response)
+        expect(client.http_client).to receive(:post).with('/sync/start', {}, hash_including({'X-Basecrm-Device-UUID' => device_uuid})).and_return(http_response)
         expect(client.sync.start(device_uuid)).to be_nil
       end
     end
@@ -77,7 +77,7 @@ describe BaseCRM::SyncService do
       end
 
       before :each do
-        expect(client.http_client).to receive(:post).with('/sync/start', {}, {'X-Basecrm-Device-UUID' => device_uuid}).and_return(http_response)
+        expect(client.http_client).to receive(:post).with('/sync/start', {}, hash_including({'X-Basecrm-Device-UUID' => device_uuid})).and_return(http_response)
       end
 
       it 'returns an instance of BaseCRM::SyncSession' do
@@ -140,7 +140,7 @@ describe BaseCRM::SyncService do
 
     context 'non empty ack_keys call' do
       it 'returns true value' do
-        expect(client.http_client).to receive(:post).with('/sync/ack', {ack_keys: ack_keys}, {'X-Basecrm-Device-UUID' => device_uuid}).and_return(http_response)
+        expect(client.http_client).to receive(:post).with('/sync/ack', {ack_keys: ack_keys}, hash_including({'X-Basecrm-Device-UUID' => device_uuid})).and_return(http_response)
         expect(client.sync.ack(device_uuid, ack_keys)).to eq(true)
       end
     end
@@ -190,9 +190,9 @@ describe BaseCRM::SyncService do
         [204, {}, nil]
       end
 
-      it 'returns an empty array' do
-        expect(client.http_client).to receive(:get).with("/sync/#{session_id}/queues/main", {}, {'X-Basecrm-Device-UUID' => device_uuid}).and_return(http_response)
-        expect(client.sync.fetch(device_uuid, session_id)).to eq([])
+      it 'returns nil' do
+        expect(client.http_client).to receive(:get).with("/sync/#{session_id}/queues/main", {}, hash_including({'X-Basecrm-Device-UUID' => device_uuid})).and_return(http_response)
+        expect(client.sync.fetch(device_uuid, session_id)).to be_nil
       end
     end
 
@@ -240,7 +240,7 @@ describe BaseCRM::SyncService do
       end
 
       before :each do
-        expect(client.http_client).to receive(:get).with("/sync/#{session_id}/queues/main", {}, {'X-Basecrm-Device-UUID' => device_uuid}).and_return(http_response)
+        expect(client.http_client).to receive(:get).with("/sync/#{session_id}/queues/main", {}, hash_including({'X-Basecrm-Device-UUID' => device_uuid})).and_return(http_response)
       end
 
       it 'returns an array' do

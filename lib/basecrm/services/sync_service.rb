@@ -33,14 +33,14 @@ module BaseCRM
     # @param device_uuid [String] Device's UUID for which to perform synchronization
     # @param session_id [String] Unique identifier of a synchronization session.
     # @param queue [String|Symbol] Queue name.
-    # @return [Array<Array<Meta, Model>>] The list of sync's metadata associated with data and data.
+    # @return [Array<Array<Meta, Model>>] The list of sync's metadata associated with data and data, or nil if nothing more to synchronize.
     def fetch(device_uuid, session_id, queue='main')
       validate_device!(device_uuid)
       raise ArgumentError, "session_id must not be nil nor empty" unless session_id && !session_id.strip.empty?
       raise ArgumentError, "queue name must not be nil nor empty" unless queue && !queue.strip.empty?
 
       status, _, root = @client.get("/sync/#{session_id}/queues/#{queue}", {}, build_headers(device_uuid))
-      return [] if status == 204
+      return nil if status == 204
 
       root[:items].map do |item|
         klass = classify_type(item[:meta][:type])
@@ -78,7 +78,10 @@ module BaseCRM
 
     def build_headers(device_uuid)
       {
-        "X-Basecrm-Device-UUID" => device_uuid
+        "X-Basecrm-Device-UUID" => device_uuid,
+        "X-Client-Type" => 'api',
+        "X-Client-Version" => BaseCRM::VERSION,
+        "X-Device-Id" => 'Ruby'
       }
     end
 

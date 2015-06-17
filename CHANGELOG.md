@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+### V1.1.3 (2015-06-17)
+
+**Features and Improvements**
+
+* Compatibility with Ruby 2.0.0+
+
 ### v1.1.2 (2015-06-17)
 
 **Features and Improments**

@@ -80,9 +80,9 @@ module BaseCRM
 
   private
     def encode_params(params)
-      params.map { |k, v|
+      Hash[params.map { |k, v|
         v.is_a?(Array) ? [k, v.join(',')] : [k, v]
-      }.to_h
+      }]
     end
 
     def extract_body(res)

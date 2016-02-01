@@ -32,7 +32,7 @@ module BaseCRM
     # @option options [String] :sort_by (id:asc) A field to sort by. The **default** ordering is **ascending**. If you want to change the sort order to descending, append `:desc` to the field e.g. `sort_by=name:desc`.
     # @return [Array<Source>] The list of Sources for the first page, unless otherwise specified.
     def where(options = {})
-      path = resource_type(options[:resource_type])
+      path = resource_type(options.delete(:resource_type))
 
       _, _, root = @client.get(path, options)
 
@@ -56,7 +56,7 @@ module BaseCRM
 
       attributes = sanitize(source)
 
-      path = resource_type(options[:resource_type])
+      path = resource_type(options.delete(:resource_type))
 
       _, _, root = @client.post(path, attributes)
 
@@ -74,7 +74,7 @@ module BaseCRM
     # @param id [Integer] Unique identifier of a Source
     # @return [Source] Searched resource object.
     def find(id, options = {})
-      path = resource_type(options[:resource_type])
+      path = resource_type(options.delete(:resource_type))
 
       _, _, root = @client.get("#{path}/#{id}")
 
@@ -98,7 +98,7 @@ module BaseCRM
       validate_type!(source)
       params = extract_params!(source, :id)
       id = params[:id]
-      path = resource_type(options[:resource_type])
+      path = resource_type(options.delete(:resource_type))
 
       attributes = sanitize(source)
       _, _, root = @client.put("#{path}/#{id}", attributes)
@@ -118,7 +118,7 @@ module BaseCRM
     # @param id [Integer] Unique identifier of a Source
     # @return [Boolean] Status of the operation.
     def destroy(id, options = {})
-      path = resource_type(options[:resource_type])
+      path = resource_type(options.delete(:resource_type))
 
       status, _, _ = @client.delete("#{path}/#{id}")
       status == 204

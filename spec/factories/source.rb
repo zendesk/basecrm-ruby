@@ -5,7 +5,16 @@ FactoryGirl.define do
 
 
     to_create do |source|
-      client.sources.create(source)
+      client.sources.create(source, resource_type: source.resource_type)
+    end
+
+    factory :lead_source do
+      resource_type 'lead'
+    end
+
+    factory :deal_source do
+      resource_type 'deal'
     end
   end
+
 end

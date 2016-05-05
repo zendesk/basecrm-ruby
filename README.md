@@ -202,6 +202,10 @@ Actions:
 * Update a deal - `client.deals.update`
 * Delete a deal - `client.deals.destroy`
 
+#### A note about deal value
+
+You should assume, that value will be returned as floating point number, but if the value has no significant digit in decimal part it will be returned as a integer.
+
 ### Lead
 
 ```ruby

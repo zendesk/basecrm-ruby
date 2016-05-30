@@ -1,4 +1,5 @@
 # WARNING: This code is auto-generated from the BaseCRM API Discovery JSON Schema
+ require "bigdecimal"
 
 module BaseCRM
   class Deal < Model
@@ -52,7 +53,12 @@ module BaseCRM
     #   @return [Array<String>] An array of tags for a deal. See more at [Tags](/docs/rest/articles/requests#tags).
     # attr_accessor :tags
     # @!attribute [rw] value
-    #   @return [Integer] Value of the deal in a currency specified in the `currency` field.
+    #   @return [BigDecimal] Value of the deal in a currency specified in the `currency` field.
     # attr_accessor :value
+
+    def initialize(*args)
+      super
+      @table[:value] = BigDecimal.new((@table[:value] || 0), 15)
+    end
   end
 end

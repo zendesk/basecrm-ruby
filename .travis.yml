@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.0.0
+  - 2.1.0
+  - 2.2.0
+  - 2.3.0
+  - ruby-head
+  - jruby-9.0.5.0
+  - jruby-9.0.0.0
+  - jruby-head
+script: bundle exec rspec spec

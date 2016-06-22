@@ -1,5 +1,8 @@
+require 'spec_helper'
+
 describe BaseCRM::DealsService do
   describe 'Decimal deal values' do
+
     context 'with an integer value' do
       it 'returns an integer value' do
         deal = create(:deal)
@@ -32,6 +35,8 @@ describe BaseCRM::DealsService do
       it 'alows creation' do
         deal = build(:deal_with_decimal_value)
 
+        allow_any_instance_of(BaseCRM::HttpClient).to receive(:request).and_return( [200 , {} , :data=> deal ] )
+
         expect(client.deals.create(deal).value).to eql(BigDecimal.new(deal.value, 15))
       end
 
@@ -39,6 +44,8 @@ describe BaseCRM::DealsService do
         deal = create(:deal_with_decimal_value)
         new_value = 900.45
         deal.value = new_value
+
+        allow_any_instance_of(BaseCRM::HttpClient).to receive(:request).and_return( [200 , {} , :data=> deal ] )
 
         expect(client.deals.update(deal).value).to eql(BigDecimal.new(new_value, 15))
       end

@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+## V 1.2.0 (2016-07-24)
+
+**Features and Improvements**
+
+* Decimal deal values support [#34](https://github.com/basecrm/basecrm-ruby/pull/34)
+
 ### V1.1.3 (2015-06-17)
 
 **Features and Improvements**

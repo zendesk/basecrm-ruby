@@ -1,5 +1,4 @@
 # WARNING: This code is auto-generated from the BaseCRM API Discovery JSON Schema
- require "bigdecimal"
 
 module BaseCRM
   class Deal < Model
@@ -58,7 +57,7 @@ module BaseCRM
 
     def initialize(*args)
       super
-      @table[:value] = BigDecimal.new((@table[:value] || 0), 15)
+      @table[:value] = BaseCRM::Coercion.to_float_value(@table[:value] || 0)
     end
   end
 end

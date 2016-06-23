@@ -57,7 +57,7 @@ module BaseCRM
 
     def initialize(*args)
       super
-      @table[:value] = BaseCRM::Coercion.to_float_value(@table[:value] || 0)
+      @table[:value] = BaseCRM::Coercion.to_decimal_value(@table[:value] || 0)
     end
   end
 end

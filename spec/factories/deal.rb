@@ -13,9 +13,5 @@ FactoryGirl.define do
     to_create do |deal|
       client.deals.create(deal)
     end
-
-    factory :deal_with_decimal_value do
-      value { "100.99" }
-    end
   end
 end

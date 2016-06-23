@@ -5,6 +5,7 @@
 **Features and Improvements**
 
 * Decimal deal values support [#34](https://github.com/basecrm/basecrm-ruby/pull/34)
+* Deal value is now a BigDecimal [#34](https://github.com/basecrm/basecrm-ruby/pull/34)
 
 ### V1.1.3 (2015-06-17)
 

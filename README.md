@@ -93,7 +93,7 @@ client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
 coffeeshop = client.contacts.where(name: "Coffee Shop")
 
 deal = client.deals.create(name: "Website redesign", contact_id: coffeeshop.id)
-deal.value = 1000
+deal.value = BigDecimal("1000.99")
 deal.currency = "USD"
 
 client.deals.update(deal) # => BaseCRM::Deal
@@ -201,6 +201,20 @@ Actions:
 * Retrieve a single deal - `client.deals.find`
 * Update a deal - `client.deals.update`
 * Delete a deal - `client.deals.destroy`
+
+**A note about deal value**
+
+It is prefered to use a BigDecimal when creating or modyfing a deal value. This guarantees correct precision
+
+```
+deal.value = BigDecimal("1000.98")
+```
+
+You should not be using floats as it may result in precision loss.
+
+```
+deal.value = 1000.98
+```
 
 ### Lead
 

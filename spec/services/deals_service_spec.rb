@@ -27,8 +27,13 @@ describe BaseCRM::DealsService do
 
   describe :create do
     it "returns instance of Deal class" do
-      @deal = build(:deal)
-      expect(client.deals.create(@deal)).to be_instance_of BaseCRM::Deal
+      deal = build(:deal)
+      expect(client.deals.create(deal)).to be_instance_of BaseCRM::Deal
+    end
+
+    it "allows to create a Deal with hash of parameters" do
+      deal = attributes_for(:deal)
+      expect(client.deals.create(deal)).to be_instance_of BaseCRM::Deal
     end
   end
 

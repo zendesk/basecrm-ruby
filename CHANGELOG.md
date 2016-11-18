@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+v1.2.1 (2016-11-18)
+
+**Features and Improvements**
+
+* Fix deal creation with hash as argument [#39](https://github.com/basecrm/basecrm-ruby/pull/39)
+
 ## v1.2.0 (2016-07-24)
 
 **Features and Improvements**

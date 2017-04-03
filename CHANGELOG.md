@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+v1.2.2 (2017-04-03)
+**Features and Improvements**
+
+* Missing last_stage_change_at in Deals model [#45](https://github.com/basecrm/basecrm-ruby/pull/45)
+
 v1.2.1 (2016-11-18)
 
 **Features and Improvements**

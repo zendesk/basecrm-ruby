@@ -2,7 +2,7 @@
 
 module BaseCRM
   class LeadsService
-    OPTS_KEYS_TO_PERSIST = Set[:address, :custom_fields, :description, :email, :facebook, :fax, :first_name, :industry, :last_name, :linkedin, :mobile, :organization_name, :owner_id, :phone, :skype, :status, :tags, :title, :twitter, :website]
+    OPTS_KEYS_TO_PERSIST = Set[:address, :custom_fields, :description, :email, :facebook, :fax, :first_name, :industry, :last_name, :linkedin, :mobile, :organization_name, :owner_id, :phone, :skype, :status, :tags, :title, :twitter, :website, :source_id]
 
     def initialize(client)
       @client = client

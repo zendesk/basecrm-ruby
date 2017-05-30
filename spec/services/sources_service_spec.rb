@@ -64,7 +64,7 @@ describe BaseCRM::SourcesService do
       expect(client.sources.find(@lead_source.id, resource_type: 'lead').resource_type).to eq 'lead'
     end
 
-    it "returns a lead source when resource_type is 'lead'" do
+    it "returns a deal source when resource_type is 'deal'" do
       expect(client.sources.find(@source.id, resource_type: 'deal').resource_type).to eq 'deal'
     end
   end

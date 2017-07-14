@@ -2,24 +2,46 @@
 
 module BaseCRM
   class LeadsService
-    OPTS_KEYS_TO_PERSIST = Set[:address, :custom_fields, :description, :email, :facebook, :fax, :first_name, :industry, :last_name, :linkedin, :mobile, :organization_name, :owner_id, :phone, :skype, :status, :tags, :title, :twitter, :website]
+    OPTS_KEYS_TO_PERSIST = Set[
+      :address,
+      :custom_fields,
+      :description,
+      :email,
+      :facebook,
+      :fax,
+      :first_name,
+      :industry,
+      :last_name,
+      :linkedin,
+      :mobile,
+      :organization_name,
+      :owner_id,
+      :phone,
+      :skype,
+      :source_id,
+      :status,
+      :tags,
+      :title,
+      :twitter,
+      :website,
+    ]
 
     def initialize(client)
       @client = client
     end
 
     # Retrieve all leads
-    # 
+    #
     # get '/leads'
     #
     # If you want to use filtering or sorting (see #where).
-    # @return [Enumerable] Paginated resource you can use to iterate over all the resources. 
+    # @return [Enumerable] Paginated resource you can use to iterate over all the resources.
     def all
       PaginatedResource.new(self)
     end
 
     # Retrieve all leads
-    # 
+    #
     # get '/leads'
     #
     # Returns all leads available to the user, according to the parameters provided
@@ -38,23 +60,23 @@ module BaseCRM
     # @option options [Integer] :per_page (25) Number of records to return per page. The default limit is *25* and the maximum number that can be returned is *100*.
     # @option options [String] :sort_by (updated_at:asc) A field to sort by. The **default** order is **ascending**. If you want to change the sort order to descending, append `:desc` to the field e.g. `sort_by=last_name:desc`.
     # @option options [String] :status Status of the lead.
-    # @return [Array<Lead>] The list of Leads for the first page, unless otherwise specified. 
+    # @return [Array<Lead>] The list of Leads for the first page, unless otherwise specified.
     def where(options = {})
       _, _, root = @client.get("/leads", options)
 
       root[:items].map{ |item| Lead.new(item[:data]) }
     end
-    
+
 
     # Create a lead
-    # 
+    #
     # post '/leads'
     #
     # Creates a new lead
     # A lead may represent a single individual or an organization
     #
-    # @param lead [Lead, Hash] Either object of the Lead type or Hash. This object's attributes describe the object to be created. 
-    # @return [Lead] The resulting object represting created resource. 
+    # @param lead [Lead, Hash] Either object of the Lead type or Hash. This object's attributes describe the object to be created.
+    # @return [Lead] The resulting object represting created resource.
     def create(lead)
       validate_type!(lead)
 
@@ -63,26 +85,26 @@ module BaseCRM
 
       Lead.new(root[:data])
     end
-    
+
 
     # Retrieve a single lead
-    # 
+    #
     # get '/leads/{id}'
     #
     # Returns a single lead available to the user, according to the unique lead ID provided
     # If the specified lead does not exist, this query returns an error
     #
     # @param id [Integer] Unique identifier of a Lead
-    # @return [Lead] Searched resource object. 
+    # @return [Lead] Searched resource object.
     def find(id)
       _, _, root = @client.get("/leads/#{id}")
 
       Lead.new(root[:data])
     end
-    
+
 
     # Update a lead
-    # 
+    #
     # put '/leads/{id}'
     #
     # Updates lead information
@@ -92,8 +114,8 @@ module BaseCRM
     # `tags` are replaced every time they are used in a request
     # </figure>
     #
-    # @param lead [Lead, Hash] Either object of the Lead type or Hash. This object's attributes describe the object to be updated. 
-    # @return [Lead] The resulting object represting updated resource. 
+    # @param lead [Lead, Hash] Either object of the Lead type or Hash. This object's attributes describe the object to be updated.
+    # @return [Lead] The resulting object represting updated resource.
     def update(lead)
       validate_type!(lead)
       params = extract_params!(lead, :id)
@@ -104,10 +126,10 @@ module BaseCRM
 
       Lead.new(root[:data])
     end
-    
+
 
     # Delete a lead
-    # 
+    #
     # delete '/leads/{id}'
     #
     # Delete an existing lead
@@ -120,7 +142,7 @@ module BaseCRM
       status, _, _ = @client.delete("/leads/#{id}")
       status == 204
     end
-    
+
 
   private
     def validate_type!(lead)
@@ -132,7 +154,7 @@ module BaseCRM
       raise ArgumentError, "one of required attributes is missing. Expected: #{args.join(',')}" if params.count != args.length
       params
     end
-       
+
     def sanitize(lead)
       lead.to_h.select { |k, _| OPTS_KEYS_TO_PERSIST.include?(k) }
     end

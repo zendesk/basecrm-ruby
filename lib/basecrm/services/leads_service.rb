@@ -2,7 +2,7 @@
 
 module BaseCRM
   class LeadsService
-    OPTS_KEYS_TO_PERSIST = Set[:address, :custom_fields, :description, :email, :facebook, :fax, :first_name, :industry, :last_name, :linkedin, :mobile, :organization_name, :owner_id, :phone, :skype, :status, :tags, :title, :twitter, :website]
+    OPTS_KEYS_TO_PERSIST = Set[:address, :custom_fields, :description, :email, :facebook, :fax, :first_name, :industry, :last_name, :linkedin, :mobile, :organization_name, :owner_id, :phone, :skype, :source_id, :status, :tags, :title, :twitter, :website]
 
     def initialize(client)
       @client = client
@@ -34,6 +34,7 @@ module BaseCRM
     # @option options [String] :last_name Last name of the lead.
     # @option options [String] :organization_name Organization name of the lead.
     # @option options [Integer] :owner_id User ID. Returns all leads owned by that user.
+    # @option options [Integer] :source_id ID of the Source.
     # @option options [Integer] :page (1) Page number to start from. Page numbering starts at 1 and omitting the `page` parameter will return the first page.
     # @option options [Integer] :per_page (25) Number of records to return per page. The default limit is *25* and the maximum number that can be returned is *100*.
     # @option options [String] :sort_by (updated_at:asc) A field to sort by. The **default** order is **ascending**. If you want to change the sort order to descending, append `:desc` to the field e.g. `sort_by=last_name:desc`.

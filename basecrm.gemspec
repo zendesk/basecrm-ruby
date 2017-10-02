@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir["spec/**/*"]
 
   spec.add_dependency "faraday", "~> 0.9", ">= 0.9.0"
-  spec.add_dependency "json", "~> 1.7", ">= 1.7.7"
+  spec.add_dependency "json", ">= 1.7.7"
 
   spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_development_dependency "rspec-collection_matchers", "~> 1.1"

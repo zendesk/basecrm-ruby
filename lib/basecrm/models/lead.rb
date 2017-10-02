@@ -60,6 +60,9 @@ module BaseCRM
     # @!attribute [rw] skype
     #   @return [String] Lead's Skype nickname.
     # attr_accessor :skype
+    # @!attribute [rw] source_id
+    #   @return [Integer] Unique identifier of the Source.
+    # attr_accessor :source_id
     # @!attribute [rw] status
     #   @return [String] Status of the lead.
     # attr_accessor :status

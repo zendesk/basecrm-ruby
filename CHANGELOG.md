@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+v1.2.3 (2017-10-02)
+**Features and Improvements**
+
+* Missing source_id in Leads model
+* Relax upper version boundary for JSON gem dependency
+
 v1.2.2 (2017-04-03)
 **Features and Improvements**
 

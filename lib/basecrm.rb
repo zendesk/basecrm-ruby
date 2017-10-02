@@ -25,6 +25,8 @@ require 'basecrm/models/stage'
 require 'basecrm/models/tag'
 require 'basecrm/models/task'
 require 'basecrm/models/user'
+require 'basecrm/models/price'
+require 'basecrm/models/product'
 require 'basecrm/models/sync_queue'
 require 'basecrm/models/sync_session'
 require 'basecrm/models/sync_meta'
@@ -43,6 +45,7 @@ require 'basecrm/services/stages_service'
 require 'basecrm/services/tags_service'
 require 'basecrm/services/tasks_service'
 require 'basecrm/services/users_service'
+require 'basecrm/services/products_service'
 require 'basecrm/services/sync_service'
 
 require 'basecrm/sync'
@@ -190,6 +193,15 @@ module BaseCRM
     # @return [UsersService] Service object for  resources.
     def users
       @users ||= UsersService.new(@http_client)
+    end
+
+    # Access all Products related actions.
+    # @see ProductsService
+    # @see Product
+    #
+    # @return [ProductsService] Service object for  resources.
+    def products
+      @products ||= ProductsService.new(@http_client)
     end
 
     # Access Sync API related low-level actions.

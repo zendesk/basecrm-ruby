@@ -10,7 +10,7 @@ describe BaseCRM::DealsService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
+
   end
 
   describe :all do
@@ -39,7 +39,7 @@ describe BaseCRM::DealsService do
 
   describe :find do
     before :each do
-      @deal = create(:deal) 
+      @deal = create(:deal)
     end
 
     it "returns an instance of Deal class" do

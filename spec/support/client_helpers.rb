@@ -7,9 +7,9 @@ module ClientHelpers
     @access_token ||= ENV.fetch("BASECRM_ACCESS_TOKEN") { raise '"BASECRM_ACCESS_TOKEN" has not been found.'  }
   end
 
- def base_url
+  def base_url
     @basecrm_url ||= ENV.fetch("BASECRM_BASE_URL") { "https://api.getbase.com" }
- end
+  end
 
   def contact
     @contact ||= FactoryGirl.create(:contact)

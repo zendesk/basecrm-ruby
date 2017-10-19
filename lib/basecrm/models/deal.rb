@@ -8,9 +8,18 @@ module BaseCRM
     # @!attribute [r] creator_id
     #   @return [Integer] Unique identifier of the user who created the deal.
     # attr_reader :creator_id
+    # @!attribute [r] dropbox_email
+    #   @return [String] Dropbox email connected with the deal.
+    # attr_reader :dropbox_email
     # @!attribute [r] id
     #   @return [Integer] Unique identifier of the deal.
     # attr_reader :id
+    # @!attribute [r] last_stage_change_at
+    #   @return [DateTime] Date and time when the deal was moved into the current stage in UTC (ISO8601 format).
+    # attr_reader :last_stage_change_at
+    # @!attribute [r] last_stage_change_by_id
+    #   @return [Integer] Unique identifier of the user who moved the deal into the current stage.
+    # attr_reader :last_stage_change_by_id
     # @!attribute [r] organization_id
     #   @return [Integer] Unique identifier of an organization.
     # attr_reader :organization_id
@@ -27,9 +36,12 @@ module BaseCRM
     # @!attribute [rw] custom_fields
     #   @return [Hash] Custom fields are key-value data attached to a deal. See more at [Custom Fields](/docs/rest/articles/requests#custom_fields).
     # attr_accessor :custom_fields
-    # @!attribute [rw] dropbox_email
-    #   @return [String] Dropbox email connected with the deal.
-    # attr_accessor :dropbox_email
+    # @!attribute [rw] customized_win_likelihood
+    #   @return [Integer] User-provided win likelihood with value range 0–100.
+    # attr_accessor :customized_win_likelihood
+    # @!attribute [rw] estimated_close_date
+    #   @return [String] Estimated close date of the deal
+    # attr_accessor :estimated_close_date
     # @!attribute [rw] hot
     #   @return [Boolean] Indicator of whether or not the deal is hot.
     # attr_accessor :hot

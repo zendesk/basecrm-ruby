@@ -216,6 +216,20 @@ You should not be using floats as it may result in precision loss.
 deal.value = 1000.98
 ```
 
+### DealSource
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.deal_sources # => BaseCRM::DealSourcesService
+```
+
+Actions:
+* Retrieve all sources - `client.deal_sources.all`
+* Create a new source - `client.deal_sources.create`
+* Retrieve a single source - `client.deal_sources.find`
+* Update a source - `client.deal_sources.update`
+* Delete a source - `client.deal_sources.destroy`
+
 ### Lead
 
 ```ruby
@@ -229,6 +243,33 @@ Actions:
 * Retrieve a single lead - `client.leads.find`
 * Update a lead - `client.leads.update`
 * Delete a lead - `client.leads.destroy`
+
+### LeadSource
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.lead_sources # => BaseCRM::LeadSourcesService
+```
+
+Actions:
+* Retrieve all sources - `client.lead_sources.all`
+* Create a new source - `client.lead_sources.create`
+* Retrieve a single source - `client.lead_sources.find`
+* Update a source - `client.lead_sources.update`
+* Delete a source - `client.lead_sources.destroy`
+
+### LineItem
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.line_items # => BaseCRM::LineItemsService
+```
+
+Actions:
+* Retrieve order's line items - `client.line_items.all`
+* Create a line item - `client.line_items.create`
+* Retrieve a single line item - `client.line_items.find`
+* Delete a line item - `client.line_items.destroy`
 
 ### LossReason
 
@@ -258,6 +299,20 @@ Actions:
 * Update a note - `client.notes.update`
 * Delete a note - `client.notes.destroy`
 
+### Order
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.orders # => BaseCRM::OrdersService
+```
+
+Actions:
+* Retrieve all orders - `client.orders.all`
+* Create an order - `client.orders.create`
+* Retrieve a single order - `client.orders.find`
+* Update an order - `client.orders.update`
+* Delete an order - `client.orders.destroy`
+
 ### Pipeline
 
 ```ruby
@@ -268,7 +323,21 @@ client.pipelines # => BaseCRM::PipelinesService
 Actions:
 * Retrieve all pipelines - `client.pipelines.all`
 
-### Source
+### Product
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.products # => BaseCRM::ProductsService
+```
+
+Actions:
+* Retrieve all products - `client.products.all`
+* Create a product - `client.products.create`
+* Retrieve a single product - `client.products.find`
+* Update a product - `client.products.update`
+* Delete a product - `client.products.destroy`
+
+### Source (Deprecated, use LeadSource or DealSource instead)
 
 ```ruby
 client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")

@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+v1.3.0 (2017-10-19)
+**Features and Improvements**
+
+* Added new models support: LeadSource, DealSource, Product, Order, LineItem
+* Deal model update, added estimated_close_date and customized_win_likelihood
+
 v1.2.3 (2017-10-02)
 **Features and Improvements**
 

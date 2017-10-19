@@ -9,17 +9,17 @@ module BaseCRM
     end
 
     # Retrieve all deals
-    # 
+    #
     # get '/deals'
     #
     # If you want to use filtering or sorting (see #where).
-    # @return [Enumerable] Paginated resource you can use to iterate over all the resources. 
+    # @return [Enumerable] Paginated resource you can use to iterate over all the resources.
     def all
       PaginatedResource.new(self)
     end
 
     # Retrieve all deals
-    # 
+    #
     # get '/deals'
     #
     # Returns all deals available to the user according to the parameters provided
@@ -36,22 +36,22 @@ module BaseCRM
     # @option options [String] :sort_by (id:asc) A field to sort by. **Default** ordering is **ascending**. If you want to change the sort ordering to descending, append `:desc` to the field e.g. `sort_by=value:desc`.
     # @option options [Integer] :source_id Id of the Source.
     # @option options [Integer] :stage_id Id of the Stage.
-    # @return [Array<Deal>] The list of Deals for the first page, unless otherwise specified. 
+    # @return [Array<Deal>] The list of Deals for the first page, unless otherwise specified.
     def where(options = {})
       _, _, root = @client.get("/deals", options)
 
       root[:items].map{ |item| Deal.new(item[:data]) }
     end
-    
+
 
     # Create a deal
-    # 
+    #
     # post '/deals'
     #
     # Create a new deal
     #
-    # @param deal [Deal, Hash] Either object of the Deal type or Hash. This object's attributes describe the object to be created. 
-    # @return [Deal] The resulting object represting created resource. 
+    # @param deal [Deal, Hash] Either object of the Deal type or Hash. This object's attributes describe the object to be created.
+    # @return [Deal] The resulting object represting created resource.
     def create(deal)
       validate_type!(deal)
 
@@ -60,26 +60,26 @@ module BaseCRM
 
       Deal.new(root[:data])
     end
-    
+
 
     # Retrieve a single deal
-    # 
+    #
     # get '/deals/{id}'
     #
     # Returns a single deal available to the user, according to the unique deal ID provided
     # If the specified deal does not exist, the request will return an error
     #
     # @param id [Integer] Unique identifier of a Deal
-    # @return [Deal] Searched resource object. 
+    # @return [Deal] Searched resource object.
     def find(id)
       _, _, root = @client.get("/deals/#{id}")
 
       Deal.new(root[:data])
     end
-    
+
 
     # Update a deal
-    # 
+    #
     # put '/deals/{id}'
     #
     # Updates deal information
@@ -89,8 +89,8 @@ module BaseCRM
     # `tags` are replaced every time they are used in a request
     # </figure>
     #
-    # @param deal [Deal, Hash] Either object of the Deal type or Hash. This object's attributes describe the object to be updated. 
-    # @return [Deal] The resulting object represting updated resource. 
+    # @param deal [Deal, Hash] Either object of the Deal type or Hash. This object's attributes describe the object to be updated.
+    # @return [Deal] The resulting object represting updated resource.
     def update(deal)
       validate_type!(deal)
       params = extract_params!(deal, :id)
@@ -101,10 +101,10 @@ module BaseCRM
 
       Deal.new(root[:data])
     end
-    
+
 
     # Delete a deal
-    # 
+    #
     # delete '/deals/{id}'
     #
     # Delete an existing deal and remove all of the associated contacts from the deal in a single call
@@ -117,7 +117,7 @@ module BaseCRM
       status, _, _ = @client.delete("/deals/#{id}")
       status == 204
     end
-    
+
 
   private
     def validate_type!(deal)
@@ -129,7 +129,7 @@ module BaseCRM
       raise ArgumentError, "one of required attributes is missing. Expected: #{args.join(',')}" if params.count != args.length
       params
     end
-       
+
     def sanitize(deal)
       deal_hash = deal.to_h.select { |k, _| OPTS_KEYS_TO_PERSIST.include?(k) }
       deal_hash[:value] = Coercion.to_string(deal_hash[:value])

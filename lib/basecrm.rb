@@ -16,7 +16,9 @@ require 'basecrm/models/address'
 require 'basecrm/models/associated_contact'
 require 'basecrm/models/contact'
 require 'basecrm/models/deal'
+require 'basecrm/models/deal_source'
 require 'basecrm/models/lead'
+require 'basecrm/models/lead_source'
 require 'basecrm/models/loss_reason'
 require 'basecrm/models/note'
 require 'basecrm/models/pipeline'
@@ -34,7 +36,9 @@ require 'basecrm/services/accounts_service'
 require 'basecrm/services/associated_contacts_service'
 require 'basecrm/services/contacts_service'
 require 'basecrm/services/deals_service'
+require 'basecrm/services/deal_sources_service'
 require 'basecrm/services/leads_service'
+require 'basecrm/services/lead_sources_service'
 require 'basecrm/services/loss_reasons_service'
 require 'basecrm/services/notes_service'
 require 'basecrm/services/pipelines_service'
@@ -111,6 +115,15 @@ module BaseCRM
       @deals ||= DealsService.new(@http_client)
     end
 
+    # Access all DealSources related actions.
+    # @see DealSourcesService
+    # @see DealSource
+    #
+    # @return [DealSourcesService] Service object for  resources.
+    def deal_sources
+      @deal_sources ||= DealSourcesService.new(@http_client)
+    end
+
     # Access all Leads related actions.
     # @see LeadsService
     # @see Lead
@@ -118,6 +131,15 @@ module BaseCRM
     # @return [LeadsService] Service object for  resources.
     def leads
       @leads ||= LeadsService.new(@http_client)
+    end
+
+    # Access all LeadSources related actions.
+    # @see LeadSourcesService
+    # @see LeadSource
+    #
+    # @return [LeadSourcesService] Service object for  resources.
+    def lead_sources
+      @lead_sources ||= LeadSourcesService.new(@http_client)
     end
 
     # Access all LossReasons related actions.

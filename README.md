@@ -216,6 +216,20 @@ You should not be using floats as it may result in precision loss.
 deal.value = 1000.98
 ```
 
+### DealSource
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.deal_sources # => BaseCRM::DealSourcesService
+```
+
+Actions:
+* Retrieve all sources - `client.deal_sources.all`
+* Create a new source - `client.deal_sources.create`
+* Retrieve a single source - `client.deal_sources.find`
+* Update a source - `client.deal_sources.update`
+* Delete a source - `client.deal_sources.destroy`
+
 ### Lead
 
 ```ruby
@@ -229,6 +243,20 @@ Actions:
 * Retrieve a single lead - `client.leads.find`
 * Update a lead - `client.leads.update`
 * Delete a lead - `client.leads.destroy`
+
+### LeadSource
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.lead_sources # => BaseCRM::LeadSourcesService
+```
+
+Actions:
+* Retrieve all sources - `client.lead_sources.all`
+* Create a new source - `client.lead_sources.create`
+* Retrieve a single source - `client.lead_sources.find`
+* Update a source - `client.lead_sources.update`
+* Delete a source - `client.lead_sources.destroy`
 
 ### LossReason
 
@@ -268,7 +296,7 @@ client.pipelines # => BaseCRM::PipelinesService
 Actions:
 * Retrieve all pipelines - `client.pipelines.all`
 
-### Source
+### Source (Deprecated, use LeadSource or DealSource instead)
 
 ```ruby
 client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")

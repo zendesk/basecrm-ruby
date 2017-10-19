@@ -258,6 +258,19 @@ Actions:
 * Update a source - `client.lead_sources.update`
 * Delete a source - `client.lead_sources.destroy`
 
+### LineItem
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.line_items # => BaseCRM::LineItemsService
+```
+
+Actions:
+* Retrieve order's line items - `client.line_items.all`
+* Create a line item - `client.line_items.create`
+* Retrieve a single line item - `client.line_items.find`
+* Delete a line item - `client.line_items.destroy`
+
 ### LossReason
 
 ```ruby
@@ -285,6 +298,20 @@ Actions:
 * Retrieve a single note - `client.notes.find`
 * Update a note - `client.notes.update`
 * Delete a note - `client.notes.destroy`
+
+### Order
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.orders # => BaseCRM::OrdersService
+```
+
+Actions:
+* Retrieve all orders - `client.orders.all`
+* Create an order - `client.orders.create`
+* Retrieve a single order - `client.orders.find`
+* Update an order - `client.orders.update`
+* Delete an order - `client.orders.destroy`
 
 ### Pipeline
 

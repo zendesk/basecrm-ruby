@@ -22,6 +22,8 @@ require 'basecrm/models/lead_source'
 require 'basecrm/models/loss_reason'
 require 'basecrm/models/note'
 require 'basecrm/models/pipeline'
+require 'basecrm/models/price'
+require 'basecrm/models/product'
 require 'basecrm/models/source'
 require 'basecrm/models/stage'
 require 'basecrm/models/tag'
@@ -42,6 +44,7 @@ require 'basecrm/services/lead_sources_service'
 require 'basecrm/services/loss_reasons_service'
 require 'basecrm/services/notes_service'
 require 'basecrm/services/pipelines_service'
+require 'basecrm/services/products_service'
 require 'basecrm/services/sources_service'
 require 'basecrm/services/stages_service'
 require 'basecrm/services/tags_service'
@@ -167,6 +170,15 @@ module BaseCRM
     # @return [PipelinesService] Service object for  resources.
     def pipelines
       @pipelines ||= PipelinesService.new(@http_client)
+    end
+
+    # Access all Products related actions.
+    # @see ProductsService
+    # @see Product
+    #
+    # @return [ProductsService] Service object for  resources.
+    def products
+      @products ||= ProductsService.new(@http_client)
     end
 
     # Access all Sources related actions.

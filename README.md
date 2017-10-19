@@ -296,6 +296,20 @@ client.pipelines # => BaseCRM::PipelinesService
 Actions:
 * Retrieve all pipelines - `client.pipelines.all`
 
+### Product
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.products # => BaseCRM::ProductsService
+```
+
+Actions:
+* Retrieve all products - `client.products.all`
+* Create a product - `client.products.create`
+* Retrieve a single product - `client.products.find`
+* Update a product - `client.products.update`
+* Delete a product - `client.products.destroy`
+
 ### Source (Deprecated, use LeadSource or DealSource instead)
 
 ```ruby

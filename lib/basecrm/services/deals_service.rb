@@ -2,7 +2,7 @@
 
 module BaseCRM
   class DealsService
-    OPTS_KEYS_TO_PERSIST = Set[:contact_id, :currency, :custom_fields, :hot, :loss_reason_id, :name, :owner_id, :source_id, :stage_id, :tags, :value, :last_stage_change_at]
+    OPTS_KEYS_TO_PERSIST = Set[:contact_id, :currency, :custom_fields, :hot, :loss_reason_id, :name, :owner_id, :source_id, :stage_id, :tags, :value, :last_stage_change_at, :estimated_close_date, :customized_win_likelihood]
 
     def initialize(client)
       @client = client
@@ -36,6 +36,7 @@ module BaseCRM
     # @option options [String] :sort_by (id:asc) A field to sort by. **Default** ordering is **ascending**. If you want to change the sort ordering to descending, append `:desc` to the field e.g. `sort_by=value:desc`.
     # @option options [Integer] :source_id Id of the Source.
     # @option options [Integer] :stage_id Id of the Stage.
+    # @option options [String] :estimated_close_date of the deal.
     # @return [Array<Deal>] The list of Deals for the first page, unless otherwise specified.
     def where(options = {})
       _, _, root = @client.get("/deals", options)

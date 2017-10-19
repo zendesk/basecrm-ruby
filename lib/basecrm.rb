@@ -7,7 +7,7 @@ require 'basecrm/envelope'
 require 'basecrm/configuration'
 require 'basecrm/http_client'
 
-require 'basecrm/utils/coercion.rb'
+require 'basecrm/utils/coercion'
 
 require 'basecrm/model'
 require 'basecrm/models/meta'

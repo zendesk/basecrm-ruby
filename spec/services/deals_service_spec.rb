@@ -52,6 +52,11 @@ describe BaseCRM::DealsService do
       @deal = create(:deal)
       expect(client.deals.update(@deal)).to be_instance_of BaseCRM::Deal
     end
+
+    it "allows to skip deal value in payload" do
+      @deal = create(:deal, value: nil)
+      expect(client.deals.update(@deal)).to be_instance_of BaseCRM::Deal
+    end
   end
 
   describe :destroy do

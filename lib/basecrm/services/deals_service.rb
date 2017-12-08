@@ -133,7 +133,7 @@ module BaseCRM
 
     def sanitize(deal)
       deal_hash = deal.to_h.select { |k, _| OPTS_KEYS_TO_PERSIST.include?(k) }
-      deal_hash[:value] = Coercion.to_string(deal_hash[:value])
+      deal_hash[:value] = Coercion.to_string(deal_hash[:value]) if deal_hash[:value]
       deal_hash
     end
   end

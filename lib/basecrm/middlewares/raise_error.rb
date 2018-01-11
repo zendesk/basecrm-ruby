@@ -8,9 +8,6 @@ module BaseCRM
 
         content_type = env[:response_headers]['content-type']
 
-        unless content_type.include?('json')
-          raise "status=#{status} error=Unknown error occurred."
-        end
 
         error_klass = case status
         when 422 then BaseCRM::ResourceError
@@ -18,7 +15,12 @@ module BaseCRM
         when 500...600 then BaseCRM::ServerError
         end
 
-        raise errors_collection(env, error_klass)
+        if  !content_type.nil? && content_type.include?('json')
+          raise errors_collection(env, error_klass)
+        else
+          error = {:data=>{:code=>status, :message=>"Unknown error occurred."}}
+          raise error_klass.new(error)
+        end
       end
 
       def errors_collection(env, error_klass)

@@ -18,7 +18,7 @@ module BaseCRM
         if  !content_type.nil? && content_type.include?('json')
           raise errors_collection(env, error_klass)
         else
-          error = {:data=>{:code=>status, :message=>"Unknown error occurred."}}
+          error = {:error=>{:code=>status, :message=>"Unknown error occurred."}, :meta=>{}}
           raise error_klass.new(error)
         end
       end

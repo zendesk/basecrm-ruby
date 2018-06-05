@@ -230,6 +230,20 @@ Actions:
 * Update a source - `client.deal_sources.update`
 * Delete a source - `client.deal_sources.destroy`
 
+### DealUnqualifiedReason
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.deal_unqualified_reasons # => BaseCRM::DealUnqualifiedReasonsService
+```
+
+Actions:
+* Retrieve all deal unqualified reasons - `client.deal_unqualified_reasons.all`
+* Create a deal unqualified reason - `client.deal_unqualified_reasons.create`
+* Retrieve a single deal unqualified reason - `client.deal_unqualified_reasons.find`
+* Update a deal unqualified reason - `client.deal_unqualified_reasons.update`
+* Delete a deal unqualified reason - `client.deal_unqualified_reasons.destroy`
+
 ### Lead
 
 ```ruby
@@ -257,6 +271,16 @@ Actions:
 * Retrieve a single source - `client.lead_sources.find`
 * Update a source - `client.lead_sources.update`
 * Delete a source - `client.lead_sources.destroy`
+
+### LeadUnqualifiedReason
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.lead_unqualified_reasons # => BaseCRM::LeadUnqualifiedReasonsService
+```
+
+Actions:
+* Retrieve all lead unqualified reasons - `client.lead_unqualified_reasons.all`
 
 ### LineItem
 

@@ -9,17 +9,17 @@ module BaseCRM
     end
 
     # Retrieve all tasks
-    # 
+    #
     # get '/tasks'
     #
     # If you want to use filtering or sorting (see #where).
-    # @return [Enumerable] Paginated resource you can use to iterate over all the resources. 
+    # @return [Enumerable] Paginated resource you can use to iterate over all the resources.
     def all
       PaginatedResource.new(self)
     end
 
     # Retrieve all tasks
-    # 
+    #
     # get '/tasks'
     #
     # Returns all tasks available to the user, according to the parameters provided
@@ -40,16 +40,16 @@ module BaseCRM
     # @option options [String] :resource_type Name of the resource type to search for.
     # @option options [String] :sort_by (updated_at:asc) A field to sort by. The **default** ordering is **ascending**. If you want to change the sort order to descending, append `:desc` to the field e.g. `sort_by=resource_type:desc`.
     # @option options [String] :type Type of tasks to search for.
-    # @return [Array<Task>] The list of Tasks for the first page, unless otherwise specified. 
+    # @return [Array<Task>] The list of Tasks for the first page, unless otherwise specified.
     def where(options = {})
       _, _, root = @client.get("/tasks", options)
 
       root[:items].map{ |item| Task.new(item[:data]) }
     end
-    
+
 
     # Create a task
-    # 
+    #
     # post '/tasks'
     #
     # Creates a new task
@@ -58,8 +58,8 @@ module BaseCRM
     # * [Contacts](/docs/rest/reference/contacts)
     # * [Deals](/docs/rest/reference/deals)
     #
-    # @param task [Task, Hash] Either object of the Task type or Hash. This object's attributes describe the object to be created. 
-    # @return [Task] The resulting object represting created resource. 
+    # @param task [Task, Hash] Either object of the Task type or Hash. This object's attributes describe the object to be created.
+    # @return [Task] The resulting object represting created resource.
     def create(task)
       validate_type!(task)
 
@@ -68,33 +68,33 @@ module BaseCRM
 
       Task.new(root[:data])
     end
-    
+
 
     # Retrieve a single task
-    # 
+    #
     # get '/tasks/{id}'
     #
     # Returns a single task available to the user according to the unique task ID provided
     # If the specified task does not exist, this query will return an error
     #
     # @param id [Integer] Unique identifier of a Task
-    # @return [Task] Searched resource object. 
+    # @return [Task] Searched resource object.
     def find(id)
       _, _, root = @client.get("/tasks/#{id}")
 
       Task.new(root[:data])
     end
-    
+
 
     # Update a task
-    # 
+    #
     # put '/tasks/{id}'
     #
     # Updates task information
     # If the specified task does not exist, this query will return an error
     #
-    # @param task [Task, Hash] Either object of the Task type or Hash. This object's attributes describe the object to be updated. 
-    # @return [Task] The resulting object represting updated resource. 
+    # @param task [Task, Hash] Either object of the Task type or Hash. This object's attributes describe the object to be updated.
+    # @return [Task] The resulting object represting updated resource.
     def update(task)
       validate_type!(task)
       params = extract_params!(task, :id)
@@ -105,10 +105,10 @@ module BaseCRM
 
       Task.new(root[:data])
     end
-    
+
 
     # Delete a task
-    # 
+    #
     # delete '/tasks/{id}'
     #
     # Delete an existing task
@@ -121,7 +121,7 @@ module BaseCRM
       status, _, _ = @client.delete("/tasks/#{id}")
       status == 204
     end
-    
+
 
   private
     def validate_type!(task)
@@ -133,7 +133,7 @@ module BaseCRM
       raise ArgumentError, "one of required attributes is missing. Expected: #{args.join(',')}" if params.count != args.length
       params
     end
-       
+
     def sanitize(task)
       task.to_h.select { |k, _| OPTS_KEYS_TO_PERSIST.include?(k) }
     end

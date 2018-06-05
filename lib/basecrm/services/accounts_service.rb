@@ -5,14 +5,14 @@ module BaseCRM
     def initialize(client)
       @client = client
     end
-  
+
     # Retrieve account details
-    # 
+    #
     # get '/accounts/self'
     #
     # Returns detailed information about your account
     #
-    # @return [Account] Resource object. 
+    # @return [Account] Resource object.
     def self
       _, _, root = @client.get("/accounts/self")
       Account.new(root[:data])

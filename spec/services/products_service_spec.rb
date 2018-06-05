@@ -10,7 +10,6 @@ describe BaseCRM::ProductsService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::ProductsService do
 
   describe :find do
     before :each do
-      @product = create(:product) 
+      @product = create(:product)
     end
 
     it "returns an instance of Product class" do

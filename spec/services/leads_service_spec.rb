@@ -10,7 +10,6 @@ describe BaseCRM::LeadsService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::LeadsService do
 
   describe :find do
     before :each do
-      @lead = create(:lead) 
+      @lead = create(:lead)
     end
 
     it "returns an instance of Lead class" do

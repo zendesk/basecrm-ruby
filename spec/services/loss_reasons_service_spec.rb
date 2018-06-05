@@ -10,7 +10,6 @@ describe BaseCRM::LossReasonsService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::LossReasonsService do
 
   describe :find do
     before :each do
-      @loss_reason = create(:loss_reason) 
+      @loss_reason = create(:loss_reason)
     end
 
     it "returns an instance of LossReason class" do

@@ -10,7 +10,6 @@ describe BaseCRM::SourcesService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::SourcesService do
 
   describe :find do
     before :each do
-      @source = create(:source) 
+      @source = create(:source)
     end
 
     it "returns an instance of Source class" do

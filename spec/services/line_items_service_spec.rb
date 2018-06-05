@@ -13,7 +13,6 @@ describe BaseCRM::LineItemsService do
     it { should respond_to :destroy }
     it { should respond_to :find }
     it { should respond_to :where }
-
   end
 
   describe :all do

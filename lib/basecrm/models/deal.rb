@@ -14,9 +14,6 @@ module BaseCRM
     # @!attribute [r] id
     #   @return [Integer] Unique identifier of the deal.
     # attr_reader :id
-    # @!attribute [r] last_stage_change_at
-    #   @return [DateTime] Date and time when the deal was moved into the current stage in UTC (ISO8601 format).
-    # attr_reader :last_stage_change_at
     # @!attribute [r] last_stage_change_by_id
     #   @return [Integer] Unique identifier of the user who moved the deal into the current stage.
     # attr_reader :last_stage_change_by_id
@@ -45,6 +42,9 @@ module BaseCRM
     # @!attribute [rw] hot
     #   @return [Boolean] Indicator of whether or not the deal is hot.
     # attr_accessor :hot
+    # @!attribute [rw] last_stage_change_at
+    #   @return [DateTime] Date and time when the deal was moved into the current stage in UTC (ISO8601 format).
+    # attr_accessor :last_stage_change_at
     # @!attribute [rw] loss_reason_id
     #   @return [Integer] Reason why the deal was lost.
     # attr_accessor :loss_reason_id

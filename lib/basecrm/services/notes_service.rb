@@ -9,17 +9,17 @@ module BaseCRM
     end
 
     # Retrieve all notes
-    # 
+    #
     # get '/notes'
     #
     # If you want to use filtering or sorting (see #where).
-    # @return [Enumerable] Paginated resource you can use to iterate over all the resources. 
+    # @return [Enumerable] Paginated resource you can use to iterate over all the resources.
     def all
       PaginatedResource.new(self)
     end
 
     # Retrieve all notes
-    # 
+    #
     # get '/notes'
     #
     # Returns all notes available to the user, according to the parameters provided
@@ -34,16 +34,16 @@ module BaseCRM
     # @option options [Integer] :resource_id Unique identifier of the resource to search for.
     # @option options [String] :resource_type Name of the type of resource to search for.
     # @option options [String] :sort_by (updated_at:asc) A field to sort by. **Default** ordering is **ascending**. If you want to change the sort ordering to descending, append `:desc` to the field e.g. `sort_by=resource_type:desc`.
-    # @return [Array<Note>] The list of Notes for the first page, unless otherwise specified. 
+    # @return [Array<Note>] The list of Notes for the first page, unless otherwise specified.
     def where(options = {})
       _, _, root = @client.get("/notes", options)
 
       root[:items].map{ |item| Note.new(item[:data]) }
     end
-    
+
 
     # Create a note
-    # 
+    #
     # post '/notes'
     #
     # Create a new note and associate it with one of the resources listed below:
@@ -51,8 +51,8 @@ module BaseCRM
     # * [Contacts](/docs/rest/reference/contacts)
     # * [Deals](/docs/rest/reference/deals)
     #
-    # @param note [Note, Hash] Either object of the Note type or Hash. This object's attributes describe the object to be created. 
-    # @return [Note] The resulting object represting created resource. 
+    # @param note [Note, Hash] Either object of the Note type or Hash. This object's attributes describe the object to be created.
+    # @return [Note] The resulting object represting created resource.
     def create(note)
       validate_type!(note)
 
@@ -61,33 +61,33 @@ module BaseCRM
 
       Note.new(root[:data])
     end
-    
+
 
     # Retrieve a single note
-    # 
+    #
     # get '/notes/{id}'
     #
     # Returns a single note available to the user, according to the unique note ID provided
     # If the note ID does not exist, this request will return an error
     #
     # @param id [Integer] Unique identifier of a Note
-    # @return [Note] Searched resource object. 
+    # @return [Note] Searched resource object.
     def find(id)
       _, _, root = @client.get("/notes/#{id}")
 
       Note.new(root[:data])
     end
-    
+
 
     # Update a note
-    # 
+    #
     # put '/notes/{id}'
     #
     # Updates note information
     # If the note ID does not exist, this request will return an error
     #
-    # @param note [Note, Hash] Either object of the Note type or Hash. This object's attributes describe the object to be updated. 
-    # @return [Note] The resulting object represting updated resource. 
+    # @param note [Note, Hash] Either object of the Note type or Hash. This object's attributes describe the object to be updated.
+    # @return [Note] The resulting object represting updated resource.
     def update(note)
       validate_type!(note)
       params = extract_params!(note, :id)
@@ -98,10 +98,10 @@ module BaseCRM
 
       Note.new(root[:data])
     end
-    
+
 
     # Delete a note
-    # 
+    #
     # delete '/notes/{id}'
     #
     # Delete an existing note
@@ -114,7 +114,7 @@ module BaseCRM
       status, _, _ = @client.delete("/notes/#{id}")
       status == 204
     end
-    
+
 
   private
     def validate_type!(note)
@@ -126,7 +126,7 @@ module BaseCRM
       raise ArgumentError, "one of required attributes is missing. Expected: #{args.join(',')}" if params.count != args.length
       params
     end
-       
+
     def sanitize(note)
       note.to_h.select { |k, _| OPTS_KEYS_TO_PERSIST.include?(k) }
     end

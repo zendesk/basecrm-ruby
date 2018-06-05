@@ -7,17 +7,17 @@ module BaseCRM
     end
 
     # Retrieve all stages
-    # 
+    #
     # get '/stages'
     #
     # If you want to use filtering or sorting (see #where).
-    # @return [Enumerable] Paginated resource you can use to iterate over all the resources. 
+    # @return [Enumerable] Paginated resource you can use to iterate over all the resources.
     def all
       PaginatedResource.new(self)
     end
 
     # Retrieve all stages
-    # 
+    #
     # get '/stages'
     #
     # Returns all stages available to the user, according to the parameters provided
@@ -30,13 +30,13 @@ module BaseCRM
     # @option options [Integer] :per_page (25) The number of records to return per page. The default limit is *25* and the maximum number that can be returned is *100*.
     # @option options [Integer] :pipeline_id (1) The unique identifier of the pipeline that contains this stage.
     # @option options [String] :sort_by (id:asc) Comma-separated list of fields to sort by. The sort criteria is applied in the order specified. The **default** ordering is **ascending**. If you want to change the sort ordering to descending, append `:desc` to the field e.g. `sort_by=position:desc`. Unsupported for now.
-    # @return [Array<Stage>] The list of Stages for the first page, unless otherwise specified. 
+    # @return [Array<Stage>] The list of Stages for the first page, unless otherwise specified.
     def where(options = {})
       _, _, root = @client.get("/stages", options)
 
       root[:items].map{ |item| Stage.new(item[:data]) }
     end
-    
+
 
   private
     def validate_type!(stage)

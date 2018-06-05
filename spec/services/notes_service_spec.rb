@@ -10,7 +10,6 @@ describe BaseCRM::NotesService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::NotesService do
 
   describe :find do
     before :each do
-      @note = create(:note) 
+      @note = create(:note)
     end
 
     it "returns an instance of Note class" do

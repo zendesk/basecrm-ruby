@@ -10,7 +10,6 @@ describe BaseCRM::TasksService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::TasksService do
 
   describe :find do
     before :each do
-      @task = create(:task) 
+      @task = create(:task)
     end
 
     it "returns an instance of Task class" do

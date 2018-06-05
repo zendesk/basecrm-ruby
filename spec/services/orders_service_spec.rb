@@ -10,7 +10,6 @@ describe BaseCRM::OrdersService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
-
   end
 
   describe :all do

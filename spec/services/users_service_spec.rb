@@ -8,7 +8,6 @@ describe BaseCRM::UsersService do
     it { should respond_to :find }
     it { should respond_to :self }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -24,7 +23,6 @@ describe BaseCRM::UsersService do
   end
 
   describe :find do
- 
     it "returns an instance of User class" do
       user = client.users.self
       expect(client.users.find(user.id)).to be_instance_of BaseCRM::User
@@ -33,7 +31,7 @@ describe BaseCRM::UsersService do
 
   describe :self do
     it "returns instance of User class" do
-      expect(client.users.self).to be_instance_of BaseCRM::User 
+      expect(client.users.self).to be_instance_of BaseCRM::User
     end
   end
 end

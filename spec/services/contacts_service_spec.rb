@@ -10,7 +10,6 @@ describe BaseCRM::ContactsService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::ContactsService do
 
   describe :find do
     before :each do
-      @contact = create(:contact) 
+      @contact = create(:contact)
     end
 
     it "returns an instance of Contact class" do

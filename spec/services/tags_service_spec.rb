@@ -10,7 +10,6 @@ describe BaseCRM::TagsService do
     it { should respond_to :find }
     it { should respond_to :update }
     it { should respond_to :where }
- 
   end
 
   describe :all do
@@ -34,7 +33,7 @@ describe BaseCRM::TagsService do
 
   describe :find do
     before :each do
-      @tag = create(:tag) 
+      @tag = create(:tag)
     end
 
     it "returns an instance of Tag class" do

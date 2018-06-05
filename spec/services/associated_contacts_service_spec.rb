@@ -8,7 +8,6 @@ describe BaseCRM::AssociatedContactsService do
     it { should respond_to :create }
     it { should respond_to :destroy }
     it { should respond_to :where }
- 
   end
 
   describe :all do

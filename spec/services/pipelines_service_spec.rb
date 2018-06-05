@@ -6,7 +6,6 @@ describe BaseCRM::PipelinesService do
 
     it { should respond_to :all }
     it { should respond_to :where }
- 
   end
 
   describe :all do

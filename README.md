@@ -174,6 +174,30 @@ Actions:
 * Create an associated contact - `client.associated_contacts.create`
 * Remove an associated contact - `client.associated_contacts.destroy`
 
+### Call
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.calls # => BaseCRM::CallsService
+```
+
+Actions:
+* Retrieve all calls - `client.calls.all`
+* Create a call - `client.calls.create`
+* Retrieve a single call - `client.calls.find`
+* Update a call - `client.calls.update`
+* Delete a call - `client.calls.destroy`
+
+### CallOutcome
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.call_outcomes # => BaseCRM::CallOutcomesService
+```
+
+Actions:
+* Retrieve all call outcomes - `client.call_outcomes.all`
+
 ### Contact
 
 ```ruby

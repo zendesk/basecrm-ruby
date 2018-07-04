@@ -14,6 +14,8 @@ require 'basecrm/models/meta'
 require 'basecrm/models/account'
 require 'basecrm/models/address'
 require 'basecrm/models/associated_contact'
+require 'basecrm/models/call'
+require 'basecrm/models/call_outcome'
 require 'basecrm/models/contact'
 require 'basecrm/models/deal'
 require 'basecrm/models/deal_source'
@@ -40,6 +42,8 @@ require 'basecrm/models/sync_meta'
 require 'basecrm/paginated_resource'
 require 'basecrm/services/accounts_service'
 require 'basecrm/services/associated_contacts_service'
+require 'basecrm/services/calls_service'
+require 'basecrm/services/call_outcomes_service'
 require 'basecrm/services/contacts_service'
 require 'basecrm/services/deals_service'
 require 'basecrm/services/deal_sources_service'
@@ -106,6 +110,24 @@ module BaseCRM
     # @return [AssociatedContactsService] Service object for  resources.
     def associated_contacts
       @associated_contacts ||= AssociatedContactsService.new(@http_client)
+    end
+
+    # Access all Calls related actions.
+    # @see CallsService
+    # @see Call
+    #
+    # @return [CallsService] Service object for  resources.
+    def calls
+      @calls ||= CallsService.new(@http_client)
+    end
+
+    # Access all CallOutcomes related actions.
+    # @see CallOutcomesService
+    # @see CallOutcome
+    #
+    # @return [CallOutcomesService] Service object for  resources.
+    def call_outcomes
+      @call_outcomes ||= CallOutcomesService.new(@http_client)
     end
 
     # Access all Contacts related actions.

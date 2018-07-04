@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+v1.3.4 (2018-07-04)
+**Features and Improvements**
+
+* Added new models support: Call, CallOutcome
+
 v1.3.3 (2018-06-05)
 **Features and Improvements**
 

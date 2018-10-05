@@ -34,7 +34,10 @@ require 'basecrm/models/source'
 require 'basecrm/models/stage'
 require 'basecrm/models/tag'
 require 'basecrm/models/task'
+require 'basecrm/models/text_message'
 require 'basecrm/models/user'
+require 'basecrm/models/visit'
+require 'basecrm/models/visit_outcome'
 require 'basecrm/models/sync_queue'
 require 'basecrm/models/sync_session'
 require 'basecrm/models/sync_meta'
@@ -61,7 +64,10 @@ require 'basecrm/services/sources_service'
 require 'basecrm/services/stages_service'
 require 'basecrm/services/tags_service'
 require 'basecrm/services/tasks_service'
+require 'basecrm/services/text_messages_service'
 require 'basecrm/services/users_service'
+require 'basecrm/services/visits_service'
+require 'basecrm/services/visit_outcomes_service'
 require 'basecrm/services/sync_service'
 
 require 'basecrm/sync'
@@ -283,6 +289,15 @@ module BaseCRM
       @tasks ||= TasksService.new(@http_client)
     end
 
+    # Access all TextMessages related actions.
+    # @see TextMessagesService
+    # @see TextMessage
+    #
+    # @return [TextMessagesService] Service object for  resources.
+    def text_messages
+      @text_messages ||= TextMessagesService.new(@http_client)
+    end
+
     # Access all Users related actions.
     # @see UsersService
     # @see User
@@ -290,6 +305,24 @@ module BaseCRM
     # @return [UsersService] Service object for  resources.
     def users
       @users ||= UsersService.new(@http_client)
+    end
+
+    # Access all Visits related actions.
+    # @see VisitsService
+    # @see Visit
+    #
+    # @return [VisitsService] Service object for  resources.
+    def visits
+      @visits ||= VisitsService.new(@http_client)
+    end
+
+    # Access all VisitOutcomes related actions.
+    # @see VisitOutcomesService
+    # @see VisitOutcome
+    #
+    # @return [VisitOutcomesService] Service object for  resources.
+    def visit_outcomes
+      @visit_outcomes ||= VisitOutcomesService.new(@http_client)
     end
 
     # Access Sync API related low-level actions.

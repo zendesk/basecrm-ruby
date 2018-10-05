@@ -437,6 +437,17 @@ Actions:
 * Update a task - `client.tasks.update`
 * Delete a task - `client.tasks.destroy`
 
+### TextMessage
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.text_messages # => BaseCRM::TextMessagesService
+```
+
+Actions:
+* Retrieve text messages - `client.text_messages.all`
+* Retrieve a single text message - `client.text_messages.find`
+
 ### User
 
 ```ruby
@@ -448,6 +459,26 @@ Actions:
 * Retrieve all users - `client.users.all`
 * Retrieve a single user - `client.users.find`
 * Retrieve an authenticating user - `client.users.self`
+
+### Visit
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.visits # => BaseCRM::VisitsService
+```
+
+Actions:
+* Retrieve visits - `client.visits.all`
+
+### VisitOutcome
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.visit_outcomes # => BaseCRM::VisitOutcomesService
+```
+
+Actions:
+* Retrieve visit outcomes - `client.visit_outcomes.all`
 
 
 ## License

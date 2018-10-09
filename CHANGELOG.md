@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+v1.3.5 (2018-10-09)
+ **Features and Improvements**
+
+ * Added new models support: TextMessage, Visit and VisitOutcome
+
 v1.3.4 (2018-07-04)
 **Features and Improvements**
 

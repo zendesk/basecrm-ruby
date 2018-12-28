@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :loss_reason, class: BaseCRM::LossReason do
 
     name { Faker::Name.name }

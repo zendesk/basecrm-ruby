@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :order, class: BaseCRM::Order do
 
     deal_id { 5 }

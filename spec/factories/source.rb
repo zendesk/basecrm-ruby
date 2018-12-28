@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :source, class: BaseCRM::Source do
 
     name { Faker::Name.name }

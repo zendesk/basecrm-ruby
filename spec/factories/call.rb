@@ -1,6 +1,6 @@
 require 'securerandom'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :call, class: BaseCRM::Call do
 
     summary { "Schedule another call." }

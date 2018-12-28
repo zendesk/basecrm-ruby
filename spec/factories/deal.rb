@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :deal, class: BaseCRM::Deal do
 
     currency { "EUR" }

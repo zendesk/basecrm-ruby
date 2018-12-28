@@ -1,10 +1,10 @@
 require 'rspec/collection_matchers'
-require 'factory_girl'
+require 'factory_bot'
 require 'faker'
 
 require 'basecrm'
 
-module FactoryGirl
+module FactoryBot
   module Strategy
     class Create
       def result(evaluation)
@@ -15,10 +15,10 @@ module FactoryGirl
 end
 
 Dir[File.join(__dir__, "/support/**/*.rb")].each { |f| require f }
-FactoryGirl.find_definitions
+FactoryBot.find_definitions
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.expect_with :rspec do |expectations|
     # It makes the `description` and `failure_message` of custom matchers include text for helper methods

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :contact, class: BaseCRM::Contact do
 
     description { "I know him via Tom" }

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :deal_unqualified_reason, class: BaseCRM::DealUnqualifiedReason do
 
     name { Faker::Name.name }

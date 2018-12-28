@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_development_dependency "rspec-collection_matchers", "~> 1.1"
   spec.add_development_dependency "fuubar", "~> 2.0"
-  spec.add_development_dependency "factory_girl", "~> 4.8"
+  spec.add_development_dependency "factory_bot", "~> 4.11"
   spec.add_development_dependency "faker", "~> 1.4"
 end

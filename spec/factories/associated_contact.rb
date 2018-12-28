@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :associated_contact, class: BaseCRM::AssociatedContact do
     # transient attributes, required in url
-    deal_id nil
+    deal_id { nil }
 
     role { "involved" }
 

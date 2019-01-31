@@ -22,7 +22,7 @@ module BaseCRM
     #   @return [Integer] The unique identifier of the organization the contact belongs to. The field will be set only if the contact is an individual.
     # attr_accessor :contact_id
     # @!attribute [rw] custom_fields
-    #   @return [Hash] Custom fields are a key-value pair attached to a contact. See more at [Custom Fields](/docs/rest/articles/requests#custom_fields).
+    #   @return [Hash] Custom fields are a key-value pair attached to a contact. See more at [Custom Fields](/docs/rest/articles/requests#custom_fields). Note! You need to set Filterable on from Settings -> Contacts to be able to search by custom fields
     # attr_accessor :custom_fields
     # @!attribute [rw] customer_status
     #   @return [String] The customer status of the contact.

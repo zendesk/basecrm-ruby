@@ -12,7 +12,7 @@ module ClientHelpers
   end
 
   def contact
-    @contact ||= FactoryGirl.create(:contact)
+    @contact ||= FactoryBot.create(:contact)
   end
 end
 
@@ -20,4 +20,4 @@ RSpec.configure do |config|
   include ClientHelpers
 end
 
-FactoryGirl::SyntaxRunner.send(:include, ClientHelpers)
+FactoryBot::SyntaxRunner.send(:include, ClientHelpers)

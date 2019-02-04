@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :line_item, class: BaseCRM::LineItem do
     # transient attributes, required in url
-    order_id nil
+    order_id { nil }
 
     product_id { 5 }
     value { 1599.99 }

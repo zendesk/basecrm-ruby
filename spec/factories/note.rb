@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :note, class: BaseCRM::Note do
 
     content { "Highly important." }

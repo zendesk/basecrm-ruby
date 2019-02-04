@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :task, class: BaseCRM::Task do
 
     content { "Contact Tom" }

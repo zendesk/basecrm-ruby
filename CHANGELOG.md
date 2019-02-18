@@ -1,5 +1,12 @@
 ## CHANGELOG
 
+v1.3.6 (2019-02-18)
+ **Features and Improvements**
+
+ * Update Contact model documentation
+ * Replace deprecated `BigDecimal.new()` with `BigDecimal()`
+ * Replace deprecated `FactoryGirl` gem with `FactoryBot` gem
+
 v1.3.5 (2018-10-09)
  **Features and Improvements**
 

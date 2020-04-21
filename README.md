@@ -480,12 +480,11 @@ client.visit_outcomes # => BaseCRM::VisitOutcomesService
 Actions:
 * Retrieve visit outcomes - `client.visit_outcomes.all`
 
-
-## License
-MIT
-
 ## Bug Reports
 Report [here](https://github.com/basecrm/basecrm-ruby/issues).
 
-## Contact
-BaseCRM developers (developers@getbase.com)
+## Copyright and license
+
+Copyright 2020 Zendesk
+
+Licensed under the [Apache License, Version 2.0](LICENSE)

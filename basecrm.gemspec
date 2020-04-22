@@ -10,10 +10,10 @@ Gem::Specification.new do |spec|
   spec.summary       = "BaseCRM Official API V2 library client for ruby"
   spec.description   = "BaseCRM Official API V2 library client for ruby"
 
-  spec.authors       = ["BaseCRM developers"]
-  spec.email         = ["developers@getbase.com"]
+  spec.authors       = ["Zendesk"]
+  spec.email         = ["opensource@zendesk.com"]
   spec.homepage      = "https://github.com/basecrm/basecrm-ruby"
-  spec.license       = "MIT"
+  spec.license       = "Apache License Version 2.0"
 
   spec.require_paths = ["lib"]
 

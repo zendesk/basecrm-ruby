@@ -25,7 +25,7 @@ v1.3.3 (2018-06-05)
 v1.3.2 (2018-01-11)
 **Features and Improvements**
 
-* Fixed undefined method exception on error handling [issue #54](https://github.com/basecrm/basecrm-ruby/issues/54)
+* Fixed undefined method exception on error handling [issue #54](https://github.com/zendesk/basecrm-ruby/issues/54)
 
 v1.3.1 (2017-12-08)
 **Features and Improvements**
@@ -47,20 +47,20 @@ v1.2.3 (2017-10-02)
 v1.2.2 (2017-04-03)
 **Features and Improvements**
 
-* Missing last_stage_change_at in Deals model [#45](https://github.com/basecrm/basecrm-ruby/pull/45)
+* Missing last_stage_change_at in Deals model [#45](https://github.com/zendesk/basecrm-ruby/pull/45)
 
 v1.2.1 (2016-11-18)
 
 **Features and Improvements**
 
-* Fix deal creation with hash as argument [#39](https://github.com/basecrm/basecrm-ruby/pull/39)
+* Fix deal creation with hash as argument [#39](https://github.com/zendesk/basecrm-ruby/pull/39)
 
 ## v1.2.0 (2016-07-24)
 
 **Features and Improvements**
 
-* Decimal deal values support [#34](https://github.com/basecrm/basecrm-ruby/pull/34)
-* Deal value is now a BigDecimal [#34](https://github.com/basecrm/basecrm-ruby/pull/34)
+* Decimal deal values support [#34](https://github.com/zendesk/basecrm-ruby/pull/34)
+* Deal value is now a BigDecimal [#34](https://github.com/zendesk/basecrm-ruby/pull/34)
 
 ### v1.1.3 (2015-06-17)
 

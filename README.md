@@ -21,7 +21,7 @@ gem 'basecrm'
 To get the latest version, put this in your Gemfile:
 
 ```ruby
-gem 'basecrm', :git => 'git://github.com/basecrm/basecrm-ruby.git'
+gem 'basecrm', :git => 'git://github.com/zendesk/basecrm-ruby.git'
 ```
 
 ## Usage
@@ -481,7 +481,7 @@ Actions:
 * Retrieve visit outcomes - `client.visit_outcomes.all`
 
 ## Bug Reports
-Report [here](https://github.com/basecrm/basecrm-ruby/issues).
+Report [here](https://github.com/zendesk/basecrm-ruby/issues).
 
 ## Copyright and license
 

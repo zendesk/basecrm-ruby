@@ -1,5 +1,15 @@
 ## CHANGELOG
 
+v1.38 (2019-05-11)
+ **Features and Improvements**
+
+ * Update github url references to new Zendesk organisation
+
+v1.3.7 (2019-04-22)
+ **Features and Improvements**
+
+ * Update gemspec license and authors
+
 v1.3.6 (2019-02-18)
  **Features and Improvements**
 

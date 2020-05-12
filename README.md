@@ -483,6 +483,12 @@ Actions:
 ## Bug Reports
 Report [here](https://github.com/zendesk/basecrm-ruby/issues).
 
+## Releasing new version of gem
+
+1. Update version [lib/basecrm/version.rb](lib/basecrm/version.rb) and [VERSION](VERSION) and push to `master`
+2. Create new GitHub release with tag name starting with `v` and the version, for example `v1.0.0`
+3. Gem will be automatically built and pushed to rubygems.org with GitHub Action
+
 ## Copyright and license
 
 Copyright 2013 Zendesk

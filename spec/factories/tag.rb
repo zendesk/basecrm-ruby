@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :tag, class: BaseCRM::Tag do
 
-    name { Faker::Name.name }
+    name { "tag#{SecureRandom.hex}" }
 
     resource_type { :contact }
 

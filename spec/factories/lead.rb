@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :lead, class: BaseCRM::Lead do
 
     description { "I know him via Tom" }
-    email { "mark@designservices.com" }
+    email { "mark#{SecureRandom.hex}@example.com" }
     facebook { "mjohnson" }
     fax { "+44-208-1234567" }
     first_name { Faker::Name.first_name }
@@ -16,7 +16,7 @@ FactoryBot.define do
     tags { ["important"] }
     title { "CEO" }
     twitter { "mjohnson" }
-    website { "www.designservices.com" }
+    website { "www.example.com" }
 
 
     to_create do |lead|

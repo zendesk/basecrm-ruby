@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :deal_unqualified_reason, class: BaseCRM::DealUnqualifiedReason do
 
-    name { Faker::Name.name }
+    name { "unqualified_reason#{SecureRandom.hex}" }
 
 
     to_create do |deal_unqualified_reason|

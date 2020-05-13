@@ -1,6 +1,7 @@
 require 'rspec/collection_matchers'
 require 'factory_bot'
 require 'faker'
+require 'securerandom'
 
 require 'basecrm'
 

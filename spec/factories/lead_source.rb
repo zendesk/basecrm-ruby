@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :lead_source, class: BaseCRM::LeadSource do
 
-    name { Faker::Name.name }
+    name { "source#{SecureRandom.hex}" }
 
 
     to_create do |lead_source|

@@ -16,11 +16,13 @@ require 'basecrm/models/address'
 require 'basecrm/models/associated_contact'
 require 'basecrm/models/call'
 require 'basecrm/models/call_outcome'
+require 'basecrm/models/choice'
 require 'basecrm/models/contact'
 require 'basecrm/models/deal'
 require 'basecrm/models/deal_source'
 require 'basecrm/models/deal_unqualified_reason'
 require 'basecrm/models/lead'
+require 'basecrm/models/lead_custom_field'
 require 'basecrm/models/lead_source'
 require 'basecrm/models/lead_unqualified_reason'
 require 'basecrm/models/line_item'
@@ -52,6 +54,7 @@ require 'basecrm/services/deals_service'
 require 'basecrm/services/deal_sources_service'
 require 'basecrm/services/deal_unqualified_reasons_service'
 require 'basecrm/services/leads_service'
+require 'basecrm/services/lead_custom_fields_service'
 require 'basecrm/services/lead_sources_service'
 require 'basecrm/services/lead_unqualified_reasons_service'
 require 'basecrm/services/line_items_service'
@@ -179,6 +182,15 @@ module BaseCRM
     # @return [LeadsService] Service object for  resources.
     def leads
       @leads ||= LeadsService.new(@http_client)
+    end
+
+    # Access all LeadCustomField related actions.
+    # @see LeadCustomFieldsService
+    # @see LeadCustomField
+    #
+    # @return [LeadCustomFieldsService] Service object for  resources.
+    def lead_custom_fields
+      @lead_custom_fields ||= LeadCustomFieldsService.new(@http_client)
     end
 
     # Access all LeadSources related actions.

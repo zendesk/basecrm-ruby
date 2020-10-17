@@ -212,6 +212,21 @@ Actions:
 * Update a contact - `client.contacts.update`
 * Delete a contact - `client.contacts.destroy`
 
+### Custom Fields
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.custom_fields # => BaseCRM::CustomFieldsService
+```
+
+Actions:
+* Retrieve all custom fields - `client.custom_fields.all('contact')`
+    * `all` excepts the following `resource_type` parameters:
+        * `lead`
+        * `contact`
+        * `deal`
+        * `prospect_and_customer`
+
 ### Deal
 
 ```ruby

@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+v1.39 (2020-10-17)
+ **Features and Improvements**
+
+ * Added new models support: CustomField
+
 v1.38 (2019-05-11)
  **Features and Improvements**
 

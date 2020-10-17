@@ -17,6 +17,7 @@ require 'basecrm/models/associated_contact'
 require 'basecrm/models/call'
 require 'basecrm/models/call_outcome'
 require 'basecrm/models/contact'
+require 'basecrm/models/custom_field'
 require 'basecrm/models/deal'
 require 'basecrm/models/deal_source'
 require 'basecrm/models/deal_unqualified_reason'
@@ -48,6 +49,7 @@ require 'basecrm/services/associated_contacts_service'
 require 'basecrm/services/calls_service'
 require 'basecrm/services/call_outcomes_service'
 require 'basecrm/services/contacts_service'
+require 'basecrm/services/custom_fields_service'
 require 'basecrm/services/deals_service'
 require 'basecrm/services/deal_sources_service'
 require 'basecrm/services/deal_unqualified_reasons_service'
@@ -109,6 +111,14 @@ module BaseCRM
       @accounts ||= AccountsService.new(@http_client)
     end
 
+    # Access all Custom Field related actions.
+    # @see CustomFieldsService
+    # @see CustomField
+    #
+    # @return [CustomFieldsService] Service object for resources.
+    def custom_fields
+      @custom_fields ||= CustomFieldsService.new(@http_client)
+    end
     # Access all AssociatedContacts related actions.
     # @see AssociatedContactsService
     # @see AssociatedContact

@@ -1,6 +1,11 @@
 ## CHANGELOG
 
-v1.38 (2019-05-11)
+v1.3.9 (2021-03-30)
+  **Features and Improvements**
+   
+  * Fixed issue where `unqualified_reason_id` param for deals could not be updated
+
+v1.3.8 (2019-05-11)
  **Features and Improvements**
 
  * Update github url references to new Zendesk organisation

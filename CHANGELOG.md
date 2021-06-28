@@ -1,8 +1,12 @@
 ## CHANGELOG
 
+v1.3.10 (2021-06-28)
+ **Features and Improvements**
+ * Added possibility to set deal's 'added_on' attribute
+
 v1.3.9 (2021-03-30)
   **Features and Improvements**
-   
+
   * Fixed issue where `unqualified_reason_id` param for deals could not be updated
 
 v1.3.8 (2019-05-11)

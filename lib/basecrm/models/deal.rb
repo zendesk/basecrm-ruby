@@ -34,7 +34,7 @@ module BaseCRM
     #   @return [Hash] Custom fields are key-value data attached to a deal. See more at [Custom Fields](/docs/rest/articles/requests#custom_fields).
     # attr_accessor :custom_fields
     # @!attribute [rw] customized_win_likelihood
-    #   @return [Integer] User-provided win likelihood with value range 0–100.
+    #   @return [Integer] User-provided win likelihood with value range 0-100.
     # attr_accessor :customized_win_likelihood
     # @!attribute [rw] estimated_close_date
     #   @return [String] Estimated close date of the deal
@@ -63,6 +63,9 @@ module BaseCRM
     # @!attribute [rw] tags
     #   @return [Array<String>] An array of tags for a deal. See more at [Tags](/docs/rest/articles/requests#tags).
     # attr_accessor :tags
+    # @!attribute [rw] added_on
+    #   @return [DateTime] Date and time when the deal was added in UTC (ISO8601 format).
+    # attr_accessor :added_on
     # @!attribute [rw] value
     #   @return [BigDecimal] Value of the deal in a currency specified in the `currency` field.
     # attr_accessor :value

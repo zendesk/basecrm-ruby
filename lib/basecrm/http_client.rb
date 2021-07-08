@@ -22,6 +22,7 @@ module BaseCRM
       options[:ssl] = { verify: false } unless config.verify_ssl
 
       @client = Faraday.new(config.base_url, options) do |faraday|
+        faraday.request :retry, max: 1
         faraday.use BaseCRM::Middlewares::OAuthBearerToken, config.access_token
         faraday.use BaseCRM::Middlewares::RaiseError
         faraday.response :logger, config.logger if config.debug?
@@ -74,7 +75,7 @@ module BaseCRM
       body = extract_body(res)
       @config.logger.debug body if @config.debug? && body && @config.logger
       [res.status, res.headers, body]
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::ConnectionFailed => e
       raise ConnectionError, e.message
     end
 

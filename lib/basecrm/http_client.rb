@@ -22,6 +22,7 @@ module BaseCRM
       options[:ssl] = { verify: false } unless config.verify_ssl
 
       @client = Faraday.new(config.base_url, options) do |faraday|
+        faraday.request :retry, retry_options
         faraday.use BaseCRM::Middlewares::OAuthBearerToken, config.access_token
         faraday.use BaseCRM::Middlewares::RaiseError
         faraday.response :logger, config.logger if config.debug?
@@ -88,6 +89,13 @@ module BaseCRM
     def extract_body(res)
       content_type = res.headers['Content-Type']
       content_type && content_type.include?('json') ? JSON.parse(res.body, symbolize_names: true) : res.body
+    end
+
+    def retry_options
+      retry_options = {}
+      retry_options[:max] = @config.max_retry if @config.max_retry
+      retry_options[:retry_statuses] = @config.retry_statuses if @config.retry_statuses
+      retry_options
     end
   end
 end

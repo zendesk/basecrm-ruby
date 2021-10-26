@@ -7,6 +7,8 @@ module BaseCRM
     attr_reader :user_agent
     attr_reader :timeout
     attr_reader :verify_ssl
+    attr_reader :max_retry
+    attr_reader :retry_statuses
 
     attr_reader :logger, :verbose
     alias_method :debug?, :verbose
@@ -19,6 +21,8 @@ module BaseCRM
       @verbose = !!options[:verbose]
       @timeout = options[:timeout] || 30
       @verify_ssl = options.fetch(:verify_ssl, true)
+      @max_retry = options[:max_retry]
+      @retry_statuses = options[:retry_statuses]
     end
 
     def validate!

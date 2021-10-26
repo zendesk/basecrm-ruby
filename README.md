@@ -49,6 +49,8 @@ The following options are available while instantiating a client:
  * __timeout__: Request timeout
  * __verbose__: Verbose/debug mode
  * __logger__: Logger used in verbose mode
+ * __max_retry__: Number of retries on failed requests. Passed to Faraday
+ * __retry_statuses__: By default only timeout error will be retries. This allows to retry on specific HTTP statuses. Passed to Faraday
 
 ### Architecture
 

@@ -1,4 +1,8 @@
 ## CHANGELOG
+v2.0.0 (2021-10-26)
+**Features and Improvements**
+* Faraday updated to version > 1.0
+* Optional parameters `max_retry` and `retry_statuses` to specify no. of retries on failed request and statuses to retry.
 
 v1.3.10 (2021-06-28)
  **Features and Improvements**

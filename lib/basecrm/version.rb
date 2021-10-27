@@ -1,3 +1,3 @@
 module BaseCRM
-  VERSION = "1.3.10"
+  VERSION = "2.0.0"
 end

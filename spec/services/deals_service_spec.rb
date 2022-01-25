@@ -9,6 +9,7 @@ describe BaseCRM::DealsService do
     it { should respond_to :destroy }
     it { should respond_to :find }
     it { should respond_to :update }
+    it { should respond_to :upsert }
     it { should respond_to :where }
 
   end
@@ -59,6 +60,14 @@ describe BaseCRM::DealsService do
     end
   end
 
+  describe :upsert do
+    it 'raises a TypeError if filters is nil' do
+
+    end
+    it 'raises an ArgumentError if filters is empty'
+    it 'calls the upsert route with encoded filters'
+  end
+ 
   describe :destroy do
     it "returns true on success" do
       @deal = create(:deal)

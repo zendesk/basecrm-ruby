@@ -9,6 +9,7 @@ describe BaseCRM::ContactsService do
     it { should respond_to :destroy }
     it { should respond_to :find }
     it { should respond_to :update }
+    it { should respond_to :upsert }
     it { should respond_to :where }
   end
 
@@ -45,6 +46,22 @@ describe BaseCRM::ContactsService do
     it "returns an updated instance of Contact class" do
       @contact = create(:contact)
       expect(client.contacts.update(@contact)).to be_instance_of BaseCRM::Contact
+    end
+  end
+
+  describe :upsert do
+    it 'raises a TypeError if filters is nil' do
+      expect(client.contacts.upsert(nil, { name: 'unique_name' }).to raise_error(TypeError)
+    end
+
+    it 'raises an ArgumentError if filters is empty' do
+      expect(client.contacts.upsert({}, { name: 'unique_name' }).to raise_error(ArgumentError)
+    end
+
+    it 'calls the upsert route with encoded filters' do
+      filters = { name: 'unique_name', 'custom_fields[external_id]': 'unique-1' }
+      contact = create(:contact)
+      expect(client.contacts.upsert(filters, contact)).to be_instance_of BaseCRM::Contact
     end
   end
 

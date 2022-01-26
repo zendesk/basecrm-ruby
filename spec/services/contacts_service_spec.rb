@@ -59,8 +59,8 @@ describe BaseCRM::ContactsService do
     end
 
     it 'calls the upsert route with encoded filters' do
-      filters = { name: 'unique_name', 'custom_fields[external_id]': 'unique-1' }
-      contact = create(:contact)
+      filters = { last_name: 'unique_name', 'custom_fields[external_id]': 'unique-1' }
+      contact = create(:contact, last_name: 'unique_name', custom_fields: { external_id: 'unique-1'})
       expect(client.contacts.upsert(filters, contact)).to be_instance_of BaseCRM::Contact
     end
   end

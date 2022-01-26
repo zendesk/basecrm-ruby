@@ -71,8 +71,8 @@ describe BaseCRM::DealsService do
 
     it 'calls the upsert route with encoded filters' do
       filters = { name: 'unique_name', 'custom_fields[external_id]': 'unique-1' }
-      attributes = filters.merge('custom_fields[category]': 'bags')
-      expect(client.deals.upsert(filters, attributes)).to be_instance_of BaseCRM::Deal
+      deal = create(:deal, name: 'unique_name', custom_fields: { external_id: 'unique-1'})
+      expect(client.deals.upsert(filters, deal)).to be_instance_of BaseCRM::Deal
     end
   end
  

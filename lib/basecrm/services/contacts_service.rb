@@ -118,7 +118,7 @@ module BaseCRM
       validate_upsert_filters!(filters)
       validate_type!(contact)
 
-      attributes = sanitize(deal)
+      attributes = sanitize(contact)
       query_string = URI.encode_www_form(filters)
       _, _, root = @client.post("/contacts/upsert?#{query_string}", attributes)
 

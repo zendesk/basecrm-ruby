@@ -114,7 +114,7 @@ module BaseCRM
     # @param filters [Hash] - hash contain filters, one level deep e.g. { name: 'string', 'custom_fields[field]': 'value' }
     # @param contact [Contact, Hash] - This object's attributes describe the object to be updated or created
     # @return [Contact] The resulting object representing updated or created resource.
-    def upsert(filters, deal)
+    def upsert(filters, contact)
       validate_upsert_filters!(filters)
       validate_type!(contact)
 

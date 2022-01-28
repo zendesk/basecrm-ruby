@@ -116,7 +116,7 @@ module BaseCRM
     # @return [Contact] The resulting object representing updated or created resource.
     def upsert(filters, deal)
       validate_upsert_filters!(filters)
-      validate_type!(deal)
+      validate_type!(contact)
 
       attributes = sanitize(deal)
       query_string = URI.encode_www_form(filters)

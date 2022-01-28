@@ -9,6 +9,7 @@ describe BaseCRM::DealsService do
     it { should respond_to :destroy }
     it { should respond_to :find }
     it { should respond_to :update }
+    it { should respond_to :upsert }
     it { should respond_to :where }
 
   end
@@ -59,6 +60,22 @@ describe BaseCRM::DealsService do
     end
   end
 
+  describe :upsert do
+    it 'raises a TypeError if filters is nil' do
+      expect(client.deals.upsert(nil, { name: 'unique_name' }).to raise_error(TypeError)
+    end
+
+    it 'raises an ArgumentError if filters is empty' do
+      expect(client.deals.upsert({}, { name: 'unique_name' }).to raise_error(ArgumentError)
+    end
+
+    it 'calls the upsert route with encoded filters' do
+      filters = { name: 'unique_name', 'custom_fields[external_id]': 'unique-1' }
+      deal = create(:deal, name: 'unique_name', custom_fields: { external_id: 'unique-1'})
+      expect(client.deals.upsert(filters, deal)).to be_instance_of BaseCRM::Deal
+    end
+  end
+ 
   describe :destroy do
     it "returns true on success" do
       @deal = create(:deal)

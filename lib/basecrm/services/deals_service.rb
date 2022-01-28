@@ -105,6 +105,28 @@ module BaseCRM
       Deal.new(root[:data])
     end
 
+    # Upsert a deal
+    #
+    # post '/deals/upsert?filter_param=filter_value 
+    #
+    # Create a new deal or update an existing, based on a value of a filter or a set of filters. 
+    # At least a single filter - query parameter - is required. If no parameters are present, the request will return an error.
+    # See full docs https://developers.getbase.com/docs/rest/reference/deals
+    #
+    # @param filters [Hash] - hash contain filters, one level deep e.g. { name: 'string', 'custom_fields[field]': 'value' }
+    # @param deal [Deal, Hash] - This object's attributes describe the object to be updated or created
+    # @return [Deal] The resulting object representing updated or created resource.
+    def upsert(filters, deal)
+      validate_upsert_filters!(filters)
+      validate_type!(deal)
+
+      attributes = sanitize(deal)
+      query_string = URI.encode_www_form(filters)
+      _, _, root = @client.post("/deals/upsert?#{query_string}", attributes)
+
+      Deal.new(root[:data])
+    end
+
 
     # Delete a deal
     #
@@ -125,6 +147,11 @@ module BaseCRM
   private
     def validate_type!(deal)
       raise TypeError unless deal.is_a?(Deal) || deal.is_a?(Hash)
+    end
+
+    def validate_upsert_filters!(filters)
+      raise TypeError unless filters.is_a?(Hash)
+      raise ArgumentError, "at least one filter is required" if filters.empty?
     end
 
     def extract_params!(deal, *args)

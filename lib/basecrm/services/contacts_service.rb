@@ -103,6 +103,28 @@ module BaseCRM
       Contact.new(root[:data])
     end
 
+    # Upsert a contact
+    #
+    # post '/contacts/upsert?filter_param=filter_value 
+    #
+    # Create a new contact or update an existing, based on a value of a filter or a set of filters. 
+    # At least a single filter - query parameter - is required. If no parameters are present, the request will return an error.
+    # See full docs https://developers.getbase.com/docs/rest/reference/contacts
+    #
+    # @param filters [Hash] - hash contain filters, one level deep e.g. { name: 'string', 'custom_fields[field]': 'value' }
+    # @param contact [Contact, Hash] - This object's attributes describe the object to be updated or created
+    # @return [Contact] The resulting object representing updated or created resource.
+    def upsert(filters, contact)
+      validate_upsert_filters!(filters)
+      validate_type!(contact)
+
+      attributes = sanitize(contact)
+      query_string = URI.encode_www_form(filters)
+      _, _, root = @client.post("/contacts/upsert?#{query_string}", attributes)
+
+      Contact.new(root[:data])
+    end
+
 
     # Delete a contact
     #
@@ -123,6 +145,11 @@ module BaseCRM
   private
     def validate_type!(contact)
       raise TypeError unless contact.is_a?(Contact) || contact.is_a?(Hash)
+    end
+
+    def validate_upsert_filters!(filters)
+      raise TypeError unless filters.is_a?(Hash)
+      raise ArgumentError, "at least one filter is required" if filters.empty?
     end
 
     def extract_params!(contact, *args)

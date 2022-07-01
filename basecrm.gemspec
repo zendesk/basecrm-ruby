@@ -7,20 +7,20 @@ require 'basecrm/version'
 Gem::Specification.new do |spec|
   spec.name          = "basecrm"
   spec.version       = BaseCRM::VERSION
-  spec.summary       = "BaseCRM Official API V2 library client for ruby"
-  spec.description   = "BaseCRM Official API V2 library client for ruby"
+  spec.summary       = "Zendesk Sell Official API V2 library client for ruby"
+  spec.description   = "Zendesk Sell Official API V2 library client for ruby"
 
-  spec.authors       = ["BaseCRM developers"]
-  spec.email         = ["developers@getbase.com"]
-  spec.homepage      = "https://github.com/basecrm/basecrm-ruby"
-  spec.license       = "MIT"
+  spec.authors       = ["Zendesk"]
+  spec.email         = ["opensource@zendesk.com"]
+  spec.homepage      = "https://github.com/zendesk/basecrm-ruby"
+  spec.license       = "Apache License Version 2.0"
 
   spec.require_paths = ["lib"]
 
   spec.files = Dir["README.md", "LICENSE",  "lib/**/*"]
   spec.test_files = Dir["spec/**/*"]
 
-  spec.add_dependency "faraday", "~> 0.9", ">= 0.9.0"
+  spec.add_dependency "faraday", "~> 1.0"
   spec.add_dependency "json", "~> 2.0"
 
   spec.add_development_dependency "rspec", "~> 3.2"

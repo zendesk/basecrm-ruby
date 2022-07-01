@@ -21,7 +21,7 @@ gem 'basecrm'
 To get the latest version, put this in your Gemfile:
 
 ```ruby
-gem 'basecrm', :git => 'git://github.com/basecrm/basecrm-ruby.git'
+gem 'basecrm', :git => 'git://github.com/zendesk/basecrm-ruby.git'
 ```
 
 ## Usage
@@ -49,6 +49,8 @@ The following options are available while instantiating a client:
  * __timeout__: Request timeout
  * __verbose__: Verbose/debug mode
  * __logger__: Logger used in verbose mode
+ * __max_retry__: Number of retries on failed requests. Passed to Faraday
+ * __retry_statuses__: By default only timeout error will be retries. This allows to retry on specific HTTP statuses. Passed to Faraday
 
 ### Architecture
 
@@ -480,12 +482,17 @@ client.visit_outcomes # => BaseCRM::VisitOutcomesService
 Actions:
 * Retrieve visit outcomes - `client.visit_outcomes.all`
 
-
-## License
-MIT
-
 ## Bug Reports
-Report [here](https://github.com/basecrm/basecrm-ruby/issues).
+Report [here](https://github.com/zendesk/basecrm-ruby/issues).
 
-## Contact
-BaseCRM developers (developers@getbase.com)
+## Releasing new version of gem
+
+1. Update version [lib/basecrm/version.rb](lib/basecrm/version.rb) and [VERSION](VERSION) and push to `master`
+2. Create new GitHub release with tag name starting with `v` and the version, for example `v1.0.0`
+3. Gem will be automatically built and pushed to rubygems.org with GitHub Action
+
+## Copyright and license
+
+Copyright 2013 Zendesk
+
+Licensed under the [Apache License, Version 2.0](LICENSE)
